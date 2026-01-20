@@ -5,6 +5,7 @@ import { routing } from '@/lib/routing';
 import { notFound } from 'next/navigation';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import LoadingScreen from '@/components/LoadingScreen';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -41,6 +42,7 @@ export default async function LocaleLayout({
       </head>
       <body className={locale === 'ar' ? 'rtl' : ''} style={{ background: '#ffffff', margin: 0, padding: 0, overflowX: 'hidden' }}>
         <NextIntlClientProvider messages={messages}>
+          <LoadingScreen />
           <Navigation />
           <main style={{ margin: 0, padding: 0, background: '#ffffff', minHeight: '100vh' }}>{children}</main>
           <Footer />

@@ -69,6 +69,7 @@ export default function Navigation() {
                       fill
                       className="object-contain"
                       priority
+                      sizes="(max-width: 768px) 224px, 256px"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         const parent = target.parentElement;
@@ -97,6 +98,7 @@ export default function Navigation() {
                       fill
                       className="object-contain"
                       priority
+                      sizes="(max-width: 768px) 224px, 256px"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         const parent = target.parentElement;

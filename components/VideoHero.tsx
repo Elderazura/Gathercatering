@@ -28,6 +28,8 @@ export default function VideoHero() {
           loop
           muted
           playsInline
+          preload="metadata"
+          poster="/images/hero/Hero 1.jpeg"
           className="w-full h-full object-cover"
           style={{ objectFit: 'cover' }}
         >

@@ -88,6 +88,7 @@ export default function GalleryGrid({
               alt={image.alt}
               category={image.category}
               className="w-full h-full"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -150,6 +151,7 @@ export default function GalleryGrid({
                   alt={currentImage.alt}
                   category={currentImage.category}
                   className="w-full h-full"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                 />
               </div>
               <div className="mt-6 text-center text-white">

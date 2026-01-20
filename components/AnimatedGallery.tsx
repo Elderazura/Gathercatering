@@ -92,7 +92,7 @@ export default function AnimatedGallery({ images, interval = 3000 }: AnimatedGal
             className={`object-cover transition-all duration-1000 ${
               currentImage.orientation === 'portrait' ? 'object-center' : ''
             }`}
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             priority={currentIndex === 0}
           />
         </motion.div>

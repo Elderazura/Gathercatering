@@ -11,6 +11,7 @@ interface ImagePlaceholderProps {
   className?: string;
   category?: string;
   priority?: boolean;
+  sizes?: string;
 }
 
 export default function ImagePlaceholder({
@@ -21,6 +22,7 @@ export default function ImagePlaceholder({
   className,
   category,
   priority = false,
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
 }: ImagePlaceholderProps) {
   // Generate a gradient based on category or use default
   const getGradient = () => {
@@ -44,6 +46,7 @@ export default function ImagePlaceholder({
         height={height}
         className={cn("object-cover", className)}
         priority={priority}
+        sizes={sizes}
       />
     );
   }
