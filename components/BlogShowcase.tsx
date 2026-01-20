@@ -47,27 +47,27 @@ export default function BlogShowcase() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="py-20 bg-white"
+      className="py-12 sm:py-16 md:py-20 bg-white"
       style={{ margin: 0, border: 'none', borderWidth: 0, outline: 'none' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-12">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-12 gap-4">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2 sm:mb-4">
               Latest Stories
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600">
               Insights on hosting great gatherings
             </p>
           </div>
           <Link
             href="/blog"
-            className="hidden md:block text-primary font-semibold hover:underline"
+            className="hidden lg:block text-primary font-semibold hover:underline text-sm sm:text-base"
           >
             View All →
           </Link>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {blogPosts.map((post, index) => (
             <motion.article
               key={post.id}
@@ -77,29 +77,29 @@ export default function BlogShowcase() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow group"
             >
-              <Link href={`/blog#${post.slug}`}>
-                <div className="relative h-64 overflow-hidden">
+              <Link href={`/blog#${post.slug}`} className="block">
+                <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <div className="p-6">
-                  <time className="text-sm text-gray-500">
+                <div className="p-4 sm:p-6">
+                  <time className="text-xs sm:text-sm text-gray-500">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     })}
                   </time>
-                  <h3 className="text-2xl font-bold text-primary mt-2 mb-3 group-hover:text-opacity-80 transition-colors">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary mt-2 mb-2 sm:mb-3 group-hover:text-opacity-80 transition-colors line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-gray-700 line-clamp-2">{post.excerpt}</p>
-                  <span className="inline-block mt-4 text-primary font-semibold group-hover:underline">
+                  <p className="text-sm sm:text-base text-gray-700 line-clamp-2 mb-3 sm:mb-4">{post.excerpt}</p>
+                  <span className="inline-block text-sm sm:text-base text-primary font-semibold group-hover:underline">
                     Read More →
                   </span>
                 </div>
@@ -107,10 +107,10 @@ export default function BlogShowcase() {
             </motion.article>
           ))}
         </div>
-        <div className="text-center mt-8 md:hidden">
+        <div className="text-center mt-6 sm:mt-8 lg:hidden">
           <Link
             href="/blog"
-            className="inline-block text-primary font-semibold hover:underline"
+            className="inline-block text-primary font-semibold hover:underline text-sm sm:text-base touch-manipulation"
           >
             View All Blog Posts →
           </Link>

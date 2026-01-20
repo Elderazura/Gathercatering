@@ -46,19 +46,19 @@ export default function Testimonials() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="py-20 bg-gradient-to-b from-white to-gray-50"
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50"
       style={{ margin: 0, border: 'none', borderWidth: 0, outline: 'none' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3 sm:mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
             Trusted by hosts across Dubai and Abu Dhabi
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
@@ -66,13 +66,13 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white p-6 sm:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="flex items-center gap-1 mb-4">
+              <div className="flex items-center gap-1 mb-3 sm:mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <svg
                     key={i}
-                    className="w-5 h-5 text-yellow-400"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -80,16 +80,16 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 italic leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 italic leading-relaxed">
                 "{testimonial.content}"
               </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-base sm:text-lg flex-shrink-0">
                   {testimonial.name.charAt(0)}
                 </div>
-                <div>
-                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600">
+                <div className="min-w-0">
+                  <p className="font-semibold text-sm sm:text-base text-gray-900 truncate">{testimonial.name}</p>
+                  <p className="text-xs sm:text-sm text-gray-600 truncate">
                     {testimonial.role}
                     {testimonial.company && `, ${testimonial.company}`}
                   </p>

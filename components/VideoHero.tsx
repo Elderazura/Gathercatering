@@ -53,7 +53,7 @@ export default function VideoHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6 relative z-[3]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 relative z-[3] leading-tight"
           >
             {t('title')}
           </motion.h1>
@@ -61,7 +61,7 @@ export default function VideoHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto relative z-[3]"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto px-2 relative z-[3] leading-relaxed"
           >
             {t('subtitle')}
           </motion.p>
@@ -73,7 +73,7 @@ export default function VideoHero() {
           >
             <Link
               href="/contact"
-              className="inline-block bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105"
+              className="inline-block bg-primary text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 touch-manipulation min-h-[44px] flex items-center justify-center"
             >
               {t('cta')}
             </Link>
@@ -86,11 +86,11 @@ export default function VideoHero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-[3]"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-[3]"
       >
         <div className="animate-bounce">
           <svg
-            className="w-6 h-6 text-white"
+            className="w-5 h-5 sm:w-6 sm:h-6 text-white"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"

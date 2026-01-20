@@ -24,19 +24,19 @@ export default function VideoShowreel({ videoUrl, title = 'Our Work Showreel' }:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="py-20 bg-gradient-to-b from-gray-50 to-white"
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white"
       style={{ margin: 0, border: 'none', borderWidth: 0, outline: 'none' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3 sm:mb-4">
             {title}
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
             Experience the essence of Gather Catering
           </p>
         </div>
-        <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
+        <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl mx-2 sm:mx-0">
           <iframe
             src={embedUrl}
             title={title}

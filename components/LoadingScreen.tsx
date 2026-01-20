@@ -32,8 +32,9 @@ export default function LoadingScreen() {
       <Image
         src="/Load.gif"
         alt="Loading"
-        width={160}
-        height={160}
+        width={120}
+        height={120}
+        className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
         priority
         unoptimized
       />

@@ -24,7 +24,7 @@ export default function Banner({ children, variant = 'primary', className = '', 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className={`py-16 ${!backgroundImage ? variants[variant] : ''} ${className}`}
+      className={`py-12 sm:py-16 ${!backgroundImage ? variants[variant] : ''} ${className}`}
       style={{ 
         margin: 0, 
         paddingTop: '5rem', 

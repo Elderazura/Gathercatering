@@ -48,7 +48,7 @@ export default function GalleryGrid({
 
   return (
     <>
-      <div className="mb-12 flex flex-wrap gap-3 justify-center">
+      <div className="mb-8 sm:mb-12 flex flex-wrap gap-2 sm:gap-3 justify-center px-2">
         {categories.map((category) => (
           <button
             key={category}
@@ -57,7 +57,7 @@ export default function GalleryGrid({
               setLightboxImage(null);
             }}
             className={cn(
-              "px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
+              "px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation min-h-[36px]",
               selectedCategory === category
                 ? "bg-[#0E564C] text-white shadow-lg shadow-[#0E564C]/20"
                 : "bg-white/80 text-[#141414] border-2 border-[#C1B9AA]/30 hover:border-[#0E564C] hover:bg-[#F4F3F1]"
@@ -68,7 +68,7 @@ export default function GalleryGrid({
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredImages.map((image, index) => (
           <motion.div
             key={index}

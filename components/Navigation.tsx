@@ -49,10 +49,10 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="relative w-56 h-16 md:w-64 md:h-20 transition-all duration-300">
+            <div className="relative w-40 h-12 sm:w-56 sm:h-16 md:w-64 md:h-20 transition-all duration-300">
               <AnimatePresence mode="wait">
                 {isScrolled ? (
                   <motion.div
@@ -118,12 +118,12 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-xs xl:text-sm font-medium transition-colors hover:text-primary ${
                   pathname === item.href
                     ? 'text-primary border-b-2 border-primary'
                     : isScrolled
@@ -136,7 +136,7 @@ export default function Navigation() {
             ))}
             <button
               onClick={toggleLanguage}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-medium transition-colors ${
                 isScrolled
                   ? 'bg-primary text-white hover:bg-opacity-90'
                   : 'bg-white text-primary hover:bg-opacity-90'
@@ -179,7 +179,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t"
+            className="lg:hidden bg-white border-t shadow-lg"
           >
             <div className="px-4 pt-2 pb-4 space-y-2">
               {navItems.map((item) => (

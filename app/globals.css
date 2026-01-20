@@ -29,6 +29,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .rtl {
@@ -96,4 +98,32 @@ main {
 
 .fade-in {
   animation: fadeIn 0.6s ease-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent text size adjustment on iOS */
+  input, textarea, select {
+    font-size: 16px;
+  }
+  
+  /* Smooth scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* iPad optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Better spacing for tablet */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
