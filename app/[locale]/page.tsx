@@ -39,7 +39,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/about"
-                className="inline-block bg-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all touch-manipulation min-h-[44px] flex items-center justify-center w-fit"
+                className="inline-block bg-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all touch-manipulation"
               >
                 Learn More
               </Link>
@@ -97,7 +97,7 @@ export default function HomePage() {
         <div className="text-center mt-8 sm:mt-12">
           <Link
             href="/services"
-            className="inline-block bg-white text-primary px-6 py-2.5 sm:px-8 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all touch-manipulation min-h-[44px] flex items-center justify-center mx-auto"
+            className="inline-block bg-white text-primary px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all touch-manipulation"
           >
             View All Services
           </Link>
@@ -232,7 +232,7 @@ export default function HomePage() {
             >
               <Link
                 href="/contact"
-                className="inline-block bg-primary text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl touch-manipulation min-h-[44px] flex items-center justify-center mx-auto"
+                className="inline-block bg-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl touch-manipulation"
               >
                 Get Started
               </Link>
