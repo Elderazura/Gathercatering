@@ -28,7 +28,7 @@ export default function LoadingScreen() {
   if (!isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0E564C]">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#22514a]">
       <Image
         src="/Load.gif"
         alt="Loading"
