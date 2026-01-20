@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "menu": "Menu",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Host with Confidence",
+    "subtitle": "Great gatherings are not just about food, but about how people are brought together",
+    "cta": "Plan Your Event"
+  },
+  "about": {
+    "title": "About Gather Cater",
+    "tagline": "Host's Mindset, Not Caterer's Mindset",
+    "description": "Gather Cater was born from a simple belief — that great gatherings are not just about food, but about how people are brought together. Inspired by a father who loved to host, where every get-together revolved around thoughtfully prepared meals, warm conversations, and effortless flow, Gather Cater exists to help people host with confidence.",
+    "specialization": "We specialise in international, non-regional menus served with genuine Indian hospitality, paired with clean, elegant setups and impeccable coordination. We don't just cater events; we take the responsibility of hosting off your shoulders, so you can focus on your guests, the moments, and the stories that matter.",
+    "hostMindset": {
+      "title": "Host's Mindset, Not Caterer's Mindset",
+      "description": "Most caterers think about quantity, timings, and menu execution. Gather Cater thinks about how guests arrive, how food flows, when grills start, how tables look, and how the host feels."
+    },
+    "internationalFood": {
+      "title": "International Food, Indian Hospitality",
+      "description": "No Kerala food. No regional bias. But still warm, generous, and attentive."
+    },
+    "beautifulSetups": {
+      "title": "Beautiful, Thoughtful Setups Without the Drama",
+      "description": "Not over-the-top. Not cheap-looking. Clean, elegant, and practical."
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Taking the responsibility of hosting off your shoulders",
+    "eventCatering": {
+      "title": "Event Catering",
+      "description": "Full-service catering for corporate events, celebrations, and special occasions"
+    },
+    "setupDesign": {
+      "title": "Elegant Setups",
+      "description": "Clean, thoughtful table arrangements and venue design"
+    },
+    "coordination": {
+      "title": "Impeccable Coordination",
+      "description": "Seamless flow from guest arrival to final farewell"
+    },
+    "menuPlanning": {
+      "title": "Custom Menu Planning",
+      "description": "International cuisine tailored to your event and preferences"
+    }
+  },
+  "menu": {
+    "title": "Our Menu",
+    "subtitle": "International Cuisine with Indian Hospitality",
+    "appetizers": "Appetizers",
+    "mainCourses": "Main Courses",
+    "desserts": "Desserts",
+    "beverages": "Beverages"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's plan your perfect gathering",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "eventType": "Event Type",
+    "eventDate": "Event Date",
+    "guests": "Number of Guests",
+    "message": "Message",
+    "submit": "Send Message",
+    "success": "Thank you! We'll get back to you soon.",
+    "error": "Something went wrong. Please try again."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Stories and insights about hosting great gatherings"
+  },
+  "footer": {
+    "description": "Taking the responsibility of hosting off your shoulders",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "email": "contact@gathercatering.ae",
+    "rights": "All rights reserved"
+  }
+}

@@ -1,0 +1,6 @@
+# Gallery Images
+
+Place your gallery images here. The gallery component expects images with the following naming pattern:
+- image-1.jpg through image-12.jpg (or more)
+
+Supported formats: JPG, PNG, WebP
