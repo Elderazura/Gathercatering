@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link, usePathname } from '@/lib/routing';
+import { Link, usePathname, useRouter } from '@/lib/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -10,6 +10,7 @@ export default function Navigation() {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,7 +24,11 @@ export default function Navigation() {
 
   const toggleLanguage = () => {
     const newLocale = locale === 'en' ? 'ar' : 'en';
-    window.location.href = pathname.replace(`/${locale}`, `/${newLocale}`);
+    // next-intl's usePathname returns path without locale prefix
+    // So pathname is like '/' or '/about', not '/en/about'
+    const cleanPath = pathname === '/' ? '' : pathname;
+    const newPath = `/${newLocale}${cleanPath}`;
+    router.push(newPath);
   };
 
   const navItems = [
@@ -47,25 +52,66 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="relative w-40 h-12">
-              <Image
-                src="/logos/Logo_Green.png"
-                alt="Gather Catering"
-                fill
-                className="object-contain"
-                priority
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  const parent = target.parentElement;
-                  if (parent && !parent.querySelector('.logo-fallback')) {
-                    target.style.display = 'none';
-                    const fallback = document.createElement('span');
-                    fallback.className = 'logo-fallback text-2xl font-bold text-primary';
-                    fallback.textContent = 'Gather Cater';
-                    parent.appendChild(fallback);
-                  }
-                }}
-              />
+            <div className="relative w-56 h-16 md:w-64 md:h-20 transition-all duration-300">
+              <AnimatePresence mode="wait">
+                {isScrolled ? (
+                  <motion.div
+                    key="green-logo"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src="/logos/Logo_Green.png"
+                      alt="Gather Catering"
+                      fill
+                      className="object-contain"
+                      priority
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        const parent = target.parentElement;
+                        if (parent && !parent.querySelector('.logo-fallback')) {
+                          target.style.display = 'none';
+                          const fallback = document.createElement('span');
+                          fallback.className = 'logo-fallback text-2xl font-bold text-primary';
+                          fallback.textContent = 'Gather Cater';
+                          parent.appendChild(fallback);
+                        }
+                      }}
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="white-logo"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src="/logos/Logo_white.png"
+                      alt="Gather Catering"
+                      fill
+                      className="object-contain"
+                      priority
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        const parent = target.parentElement;
+                        if (parent && !parent.querySelector('.logo-fallback')) {
+                          target.style.display = 'none';
+                          const fallback = document.createElement('span');
+                          fallback.className = 'logo-fallback text-2xl font-bold text-white';
+                          fallback.textContent = 'Gather Cater';
+                          parent.appendChild(fallback);
+                        }
+                      }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </Link>
 

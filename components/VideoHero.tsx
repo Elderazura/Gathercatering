@@ -3,27 +3,46 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/lib/routing';
-import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 export default function VideoHero() {
   const t = useTranslations('hero');
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Ensure video plays
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay was prevented, user interaction required
+      });
+    }
+  }, []);
 
   return (
     <div className="relative h-screen w-full overflow-hidden" style={{ margin: 0, padding: 0 }}>
-      {/* Hero Image Background */}
+      {/* Hero Video Background */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <Image
-          src="/images/hero/Hero 1.jpeg"
-          alt="Gather Catering Hero"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
+        >
+          <source src="/images/hero/herovideo.webm" type="video/webm" />
+          {/* Fallback image if video doesn't load */}
+          <img
+            src="/images/hero/Hero 1.jpeg"
+            alt="Gather Catering Hero"
+            className="w-full h-full object-cover"
+          />
+        </video>
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 video-overlay z-[1]" />
+      {/* Overlay - Removed green gradient, using subtle dark overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-30 z-[1]" />
 
       {/* Content - Properly layered */}
       <div className="relative z-[2] flex items-center justify-center h-full">

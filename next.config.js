@@ -7,6 +7,12 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.vercel.app',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
 };

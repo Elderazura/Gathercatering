@@ -77,13 +77,9 @@ main {
   background: #ffffff !important;
 }
 
-/* Video overlay gradient */
+/* Video overlay - removed green gradient, using subtle dark overlay instead */
 .video-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(4, 84, 74, 0.3) 0%,
-    rgba(4, 84, 74, 0.6) 100%
-  );
+  background: rgba(0, 0, 0, 0.3);
 }
 
 /* Animations */

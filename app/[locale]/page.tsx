@@ -10,6 +10,7 @@ import VideoShowreel from '@/components/VideoShowreel';
 import InstagramFeed from '@/components/InstagramFeed';
 import Testimonials from '@/components/Testimonials';
 import BlogShowcase from '@/components/BlogShowcase';
+import AnimatedGallery from '@/components/AnimatedGallery';
 import { Link } from '@/lib/routing';
 
 export default function HomePage() {
@@ -50,7 +51,7 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
             >
               <ParallaxImageSection
-                src="/media/images/catering 1.jpeg"
+                src="/media/images/food 1.jpeg"
                 alt="Gather Catering Service"
                 orientation="landscape"
                 speed={0.4}
@@ -111,7 +112,7 @@ export default function HomePage() {
         />
       </ParallaxSection>
 
-      {/* Image Showcase */}
+      {/* Animated Gallery Section */}
       <ParallaxSection speed={0.1}>
         <section 
           className="py-20 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden" 
@@ -132,51 +133,53 @@ export default function HomePage() {
                 Capturing moments of excellence
               </p>
             </motion.div>
+            
+            {/* Main Animated Gallery */}
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <ParallaxImageSection
-                src="/media/images/1e2.jpeg"
-                alt="Gather Catering Food Presentation"
-                orientation="portrait"
-                speed={0.3}
-              />
-              <ParallaxImageSection
-                src="/media/images/catering 2.jpeg"
-                alt="Gather Catering Event Setup"
-                orientation="landscape"
-                speed={0.4}
-              />
+              <div className="relative h-[600px] overflow-hidden rounded-lg shadow-xl">
+                <AnimatedGallery
+                  images={[
+                    { src: '/media/images/1e2.jpeg', alt: 'Gather Catering Food Presentation', orientation: 'portrait' },
+                    { src: '/media/images/1e3.jpeg', alt: 'Gather Catering Cuisine', orientation: 'portrait' },
+                    { src: '/media/images/1e4.jpeg', alt: 'Gather Catering Presentation', orientation: 'portrait' },
+                    { src: '/media/images/1e5.jpeg', alt: 'Gather Catering Event', orientation: 'portrait' },
+                    { src: '/media/images/1e6.jpeg', alt: 'Gather Catering Service', orientation: 'portrait' },
+                  ]}
+                  interval={3000}
+                />
+              </div>
+              <div className="relative h-[600px] overflow-hidden rounded-lg shadow-xl">
+                <AnimatedGallery
+                  images={[
+                    { src: '/media/images/food 1.jpeg', alt: 'Gather Catering Menu', orientation: 'landscape' },
+                    { src: '/media/images/food 2.jpeg', alt: 'Gather Catering Food', orientation: 'landscape' },
+                    { src: '/media/images/food 3.jpeg', alt: 'Gather Catering Cuisine', orientation: 'landscape' },
+                    { src: '/media/images/food 4.jpeg', alt: 'Gather Catering Presentation', orientation: 'landscape' },
+                    { src: '/media/images/food 5.jpeg', alt: 'Gather Catering Service', orientation: 'landscape' },
+                  ]}
+                  interval={3500}
+                />
+              </div>
             </div>
+
+            {/* Additional Static Images */}
             <div className="grid md:grid-cols-3 gap-8">
               <ParallaxImageSection
-                src="/media/images/1e3.jpeg"
-                alt="Gather Catering Cuisine"
-                orientation="portrait"
-                speed={0.35}
-              />
-              <ParallaxImageSection
-                src="/media/images/catering 1.jpeg"
-                alt="Gather Catering Menu"
-                orientation="landscape"
-                speed={0.4}
-              />
-              <ParallaxImageSection
-                src="/media/images/1e4.jpeg"
-                alt="Gather Catering Presentation"
-                orientation="portrait"
-                speed={0.3}
-              />
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 mt-8">
-              <ParallaxImageSection
-                src="/media/images/1e5.jpeg"
+                src="/media/images/1e1.jpeg"
                 alt="Gather Catering Event"
                 orientation="portrait"
                 speed={0.35}
               />
               <ParallaxImageSection
-                src="/media/images/1e6.jpeg"
+                src="/media/images/catering 1.jpeg"
+                alt="Gather Catering Setup"
+                orientation="landscape"
+                speed={0.4}
+              />
+              <ParallaxImageSection
+                src="/media/images/catering 2.jpeg"
                 alt="Gather Catering Service"
-                orientation="portrait"
+                orientation="landscape"
                 speed={0.3}
               />
             </div>
@@ -199,7 +202,7 @@ export default function HomePage() {
 
       {/* CTA Banner */}
       <ParallaxSection speed={0.08}>
-        <Banner variant="secondary" className="py-20 relative overflow-hidden">
+        <Banner variant="secondary" className="py-20 relative overflow-hidden" backgroundImage="/media/images/catering 1.jpeg">
           <div className="text-center relative z-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
