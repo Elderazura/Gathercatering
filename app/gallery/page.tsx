@@ -4,22 +4,16 @@ import Section from "@/components/Section";
 import Container from "@/components/Container";
 import GalleryGrid from "@/components/GalleryGrid";
 import { motion } from "framer-motion";
+import { gatherImages } from "@/lib/constants";
 
-// Gallery images with placeholders
-const galleryImages = [
-  { src: "", alt: "Elegant tablescape setup", category: "Tablescapes" },
-  { src: "", alt: "Modern buffet display", category: "Buffets" },
-  { src: "", alt: "Live grill station", category: "Live Counters" },
-  { src: "", alt: "Plated dinner service", category: "Plated" },
-  { src: "", alt: "Detail shot of table setting", category: "Details" },
-  { src: "", alt: "Garden party setup", category: "Tablescapes" },
-  { src: "", alt: "Canapé display", category: "Buffets" },
-  { src: "", alt: "Live counter service", category: "Live Counters" },
-  { src: "", alt: "Elegant plated course", category: "Plated" },
-  { src: "", alt: "Table detail", category: "Details" },
-  { src: "", alt: "Sunset table setup", category: "Tablescapes" },
-  { src: "", alt: "Dessert buffet", category: "Buffets" },
-];
+const categories = ["Tablescapes", "Buffets", "Live Counters", "Plated", "Details"];
+
+// Gallery images from gather_image - distributed across categories
+const galleryImages = gatherImages.gallery.map((src, i) => ({
+  src,
+  alt: "Gather Catering event",
+  category: categories[i % categories.length],
+}));
 
 export default function Gallery() {
   return (

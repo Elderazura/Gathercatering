@@ -2,271 +2,153 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import Banner from '@/components/Banner';
-import VideoSection from '@/components/VideoSection';
-import ImageSection from '@/components/ImageSection';
-import ParallaxImageSection from '@/components/ParallaxImageSection';
-import ParallaxSection from '@/components/ParallaxSection';
+import { Home, Users, Briefcase, Flame, ArrowRight } from 'lucide-react';
 import { Link } from '@/lib/routing';
+import { Button } from '@/components/ui/button';
+const services = [
+  { key: 'boutiqueFive' as const, Icon: Home, image: '/service/1.jpeg' },
+  { key: 'socialFlow' as const, Icon: Users, image: '/service/2.jpeg' },
+  { key: 'corporateConnector' as const, Icon: Briefcase, image: '/service/3.jpeg' },
+  { key: 'liveRituals' as const, Icon: Flame, image: '/service/4.jpeg' },
+];
+
+const fadeIn = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
 export default function ServicesPage() {
   const t = useTranslations('services');
 
-  const services = [
-    {
-      key: 'eventCatering',
-      icon: '🍽️',
-      image: '/media/images/catering 1.jpeg',
-      orientation: 'landscape' as const,
-    },
-    {
-      key: 'setupDesign',
-      icon: '✨',
-      image: '/media/images/1e2.jpeg',
-      orientation: 'portrait' as const,
-    },
-    {
-      key: 'coordination',
-      icon: '🤝',
-      image: '/media/images/food 1.jpeg',
-      orientation: 'landscape' as const,
-    },
-    {
-      key: 'menuPlanning',
-      icon: '📋',
-      image: '/media/images/1e3.jpeg',
-      orientation: 'portrait' as const,
-    },
-  ];
-
-  const additionalServices = [
-    {
-      title: 'Event Planning Consultation',
-      description: 'Expert guidance to plan your perfect event from concept to execution',
-      icon: '📅',
-    },
-    {
-      title: 'Custom Menu Development',
-      description: 'Tailored menus that reflect your taste and dietary requirements',
-      icon: '🍴',
-    },
-    {
-      title: 'Staff Coordination',
-      description: 'Professional service staff trained in hospitality excellence',
-      icon: '👥',
-    },
-    {
-      title: 'Equipment & Setup',
-      description: 'Complete setup including tables, linens, and elegant decor',
-      icon: '🪑',
-    },
-  ];
-
   return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <Banner variant="primary" className="py-20">
-        <div className="text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
-          >
-            {t('title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl opacity-90"
-          >
-            {t('subtitle')}
-          </motion.p>
+    <div className="pt-16 sm:pt-20">
+      {/* Hero - Image with overlapping card */}
+      <section className="relative" style={{ margin: 0, border: 'none' }}>
+        <div className="relative h-[55vh] min-h-[380px] md:h-[65vh]">
+          <img
+            src="/service/service_hero.jpeg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
         </div>
-      </Banner>
-
-      {/* Main Services Grid */}
-      <section className="py-20 bg-white" style={{ margin: 0, border: 'none', borderWidth: 0, outline: 'none' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-24">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.key}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                  <div className="text-6xl mb-6">{service.icon}</div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-                    {t(`${service.key}.title`)}
-                  </h2>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    {t(`${service.key}.description`)}
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      'Personalized consultation',
-                      'Detailed planning',
-                      'Seamless execution',
-                      'Post-event follow-up',
-                    ].map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-center gap-3 text-gray-600">
-                        <span className="text-primary">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={index % 2 === 1 ? 'md:order-1' : ''}>
-                  <ParallaxImageSection
-                    src={service.image}
-                    alt={t(`${service.key}.title`)}
-                    orientation={service.orientation}
-                    speed={0.3 + (index * 0.1)}
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Services */}
-      <ParallaxSection speed={0.1}>
-      <section className="py-20 bg-gray-50" style={{ margin: 0, border: 'none', borderWidth: 0, outline: 'none' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 -mt-20 md:-mt-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white p-8 md:p-12 shadow-xl"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Additional Services
-            </h2>
-              <p className="text-xl text-gray-600">
-                Comprehensive solutions for your event needs
-              </p>
-            </motion.div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {additionalServices.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <div className="text-5xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {service.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </ParallaxSection>
-
-      {/* Process Section */}
-      <section className="py-20 bg-white" style={{ margin: 0, border: 'none', borderWidth: 0, outline: 'none' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Our Process
-            </h2>
-            <p className="text-xl text-gray-600">
-              From consultation to celebration
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight">
+              {t('title')}
+            </h1>
+            <p className="mt-5 text-lg text-gray-600 max-w-2xl">
+              {t('subtitle')}
+            </p>
+            <p className="mt-4 text-gray-600">
+              {t('intro')}
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { step: '1', title: 'Consultation', desc: 'Understanding your vision' },
-              { step: '2', title: 'Planning', desc: 'Detailed event planning' },
-              { step: '3', title: 'Execution', desc: 'Seamless day-of service' },
-              { step: '4', title: 'Follow-up', desc: 'Ensuring your satisfaction' },
-            ].map((item, index) => (
+        </div>
+      </section>
+
+      {/* Services - Alternating rows */}
+      <section className="py-20 md:py-28 bg-white" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {services.map((svc, idx) => {
+            const Icon = svc.Icon;
+            const isEven = idx % 2 === 0;
+            return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                key={svc.key}
+                {...fadeIn}
+                transition={{ delay: idx * 0.05 }}
+                className="grid md:grid-cols-2 gap-12 md:gap-16 items-center py-16 md:py-20 border-b border-gray-100 last:border-0"
               >
-                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {item.step}
+                <div className={!isEven ? 'md:order-2' : ''}>
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={svc.image}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-primary mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600">{item.desc}</p>
+                <div className={!isEven ? 'md:order-1' : ''}>
+                  <span className="text-5xl md:text-6xl font-bold text-primary/20">{t(`${svc.key}.num`)}</span>
+                  <div className="flex items-center gap-3 mt-2 mb-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-primary">{t(`${svc.key}.title`)}</h2>
+                  </div>
+                  <p className="text-gray-600 font-medium mb-4">{t(`${svc.key}.subtitle`)}</p>
+                  <p className="text-gray-700 leading-relaxed mb-6">{t(`${svc.key}.tagline`)}</p>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <p>{t(`${svc.key}.vibe`)}</p>
+                    <p>{t(`${svc.key}.flow`)}</p>
+                    <p className="text-primary font-medium">{t(`${svc.key}.perfectFor`)}</p>
+                  </div>
+                </div>
               </motion.div>
-            ))}
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Standards */}
+      <section className="py-20 md:py-28 bg-[#F8F7F5]" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeIn}>
+            <h2 className="text-2xl font-bold text-primary mb-6">{t('standards.title')}</h2>
+            <p className="text-gray-600 italic mb-10">{t('standards.subtitle')}</p>
+            <div className="space-y-8">
+              <p className="text-gray-700 leading-relaxed">{t('standards.hostFirst')}</p>
+              <p className="text-gray-700 leading-relaxed">{t('standards.minimalist')}</p>
+              <p className="text-gray-700 leading-relaxed">{t('standards.backbone')}</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Image strip */}
+      <section style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-3 gap-2 md:gap-4">
+            <motion.div {...fadeIn} className="aspect-[3/4] overflow-hidden">
+              <img src="/images/gather/food/gather-pics-28.jpg" alt="" className="h-full w-full object-cover" />
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="aspect-[3/4] overflow-hidden">
+              <img src="/images/gather/food/gather-pics-32.jpg" alt="" className="h-full w-full object-cover" />
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="aspect-[3/4] overflow-hidden">
+              <img src="/images/gather/food/gather-pics-36.jpg" alt="" className="h-full w-full object-cover" />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Image Gallery */}
-      <ParallaxSection speed={0.15}>
-      <section className="py-20 bg-gray-50" style={{ margin: 0, border: 'none', borderWidth: 0, outline: 'none' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-              <ParallaxImageSection
-                src="/media/images/1e4.jpeg"
-                alt="Service Gallery"
-                orientation="portrait"
-                speed={0.3}
-              />
-              <ParallaxImageSection
-                src="/media/images/food 2.jpeg"
-                alt="Service Gallery"
-                orientation="landscape"
-                speed={0.4}
-              />
-              <ParallaxImageSection
-                src="/media/images/1e5.jpeg"
-                alt="Service Gallery"
-                orientation="portrait"
-                speed={0.35}
-              />
-            </div>
-          </div>
-        </section>
-      </ParallaxSection>
-
-      {/* CTA Section */}
-      <Banner variant="secondary" className="py-20">
-        <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Contact us to discuss your event and let's create something memorable
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105"
-          >
-            Contact Us
-          </Link>
+      {/* CTA */}
+      <section className="py-20 md:py-28 bg-primary text-white" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h2 {...fadeIn} className="text-2xl md:text-3xl font-bold mb-6">
+            {t('consult.headline')}
+          </motion.h2>
+          <motion.p {...fadeIn} transition={{ delay: 0.1 }} className="opacity-95 mb-10">
+            {t('consult.body')}
+          </motion.p>
+          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button size="lg" className="bg-white text-primary hover:bg-white/95 rounded-full w-full sm:w-auto">
+                {t('consult.consultBtn')}
+              </Button>
+            </Link>
+            <Link href="/menu">
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 rounded-full w-full sm:w-auto">
+                {t('consult.menuBtn')}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </motion.div>
         </div>
-      </Banner>
+      </section>
     </div>
   );
 }

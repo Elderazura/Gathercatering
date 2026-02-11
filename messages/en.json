@@ -8,55 +8,188 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Host with Confidence",
-    "subtitle": "Great gatherings are not just about food, but about how people are brought together",
-    "cta": "Plan Your Event"
+    "title": "Everyone feeds. Few truly host.",
+    "subtitle": "We don't deliver a menu—we inherit your responsibility. You're the soul of the party, not the coordinator.",
+    "cta": "Host Your First Gathering",
+    "location": "Dubai & Abu Dhabi"
+  },
+  "why": {
+    "headline": "If there are 5 of you, it's a gathering.",
+    "body": "In the UAE, we've forgotten the art of the small get-together. We think professional hosting is only for weddings and gala dinners. We disagree. If you've invited four friends over, you shouldn't be stuck behind a cutting board. From the moment the first guest rings the bell to the final clink of a glass, we manage the rhythm, the flow, and the flavor.",
+    "cta": "About: The Soul of Gather"
+  },
+  "dna": {
+    "headline": "A Legacy of Warmth",
+    "body": "Gather was created to fill a gap in the UAE market: the need for high-end, international catering served with a \"Host's Mindset\" rather than a \"Vendor's Mindset.\" We've stripped away the regional boundaries and the \"industrial\" feel of traditional catering.",
+    "cta": "The Menu & Experience"
+  },
+  "international": {
+    "headline": "Global by Design. Radical in Hospitality.",
+    "body": "We don't do \"standard.\" Our menus are a passport to international flavors, curated specifically for the sophisticated, diverse palate of the UAE. We've stripped away the regional biases and the predictable catering tropes to deliver bold, global excellence."
+  },
+  "hostMindset": {
+    "title": "Most Caterers think about...",
+    "subtitle": "Gather thinks about...",
+    "row1": {
+      "caterers": "How many plates?",
+      "gather": "How do guests feel when they arrive?"
+    },
+    "row2": {
+      "caterers": "Is the food hot?",
+      "gather": "Is the grill sizzling at the exact right moment?"
+    },
+    "row3": {
+      "caterers": "What time do we leave?",
+      "gather": "How do we make the host feel like a guest?"
+    },
+    "row4": {
+      "caterers": "Menu Execution",
+      "gather": "The Flow of the Conversation"
+    }
+  },
+  "boutiqueFive": {
+    "title": "The Boutique Five",
+    "subtitle": "Your dining room, reimagined.",
+    "diningRoom": {
+      "title": "Your Dining Room, Reimagined",
+      "description": "Professional hosting for groups of 5+, because intimate doesn't mean informal."
+    },
+    "socialFlow": {
+      "title": "The Social Flow",
+      "description": "Garden parties, rooftop mixers, and villa celebrations where the food moves with the crowd."
+    },
+    "liveRitual": {
+      "title": "The Live Ritual",
+      "description": "There is a theater to great food. Our live stations are designed to be the heartbeat of your event, not just a buffet line."
+    },
+    "cta": "View All Services"
+  },
+  "closing": {
+    "headline": "You bring the people. We'll bring the soul.",
+    "cta": "Get Started"
   },
   "about": {
-    "title": "About Gather Cater",
-    "tagline": "Host's Mindset, Not Caterer's Mindset",
-    "description": "Gather Cater was born from a simple belief — that great gatherings are not just about food, but about how people are brought together. Inspired by a father who loved to host, where every get-together revolved around thoughtfully prepared meals, warm conversations, and effortless flow, Gather Cater exists to help people host with confidence.",
-    "specialization": "We specialise in international, non-regional menus served with genuine Indian hospitality, paired with clean, elegant setups and impeccable coordination. We don't just cater events; we take the responsibility of hosting off your shoulders, so you can focus on your guests, the moments, and the stories that matter.",
-    "hostMindset": {
-      "title": "Host's Mindset, Not Caterer's Mindset",
-      "description": "Most caterers think about quantity, timings, and menu execution. Gather Cater thinks about how guests arrive, how food flows, when grills start, how tables look, and how the host feels."
+    "headline": "Inherited Warmth. International Flavor.",
+    "subheadline": "We didn't learn to host from a textbook. We learned it from Suja's Kitchen.",
+    "legacy": {
+      "title": "The Legacy: Rooted in Suja's Kitchen",
+      "intro": "Before Gather, there was Suja's Kitchen.",
+      "body": "Founded in 1999 by Mrs. Suja Alex, Suja's Kitchen began as a humble home project in the UAE, fueled by a passion for the authentic, soul-deep flavors of Kerala. For over 25 years, it has been a beacon of Indian culinary heritage, growing from a single stove into a trusted catering institution known for its \"mother's touch\" and uncompromising quality.",
+      "continuation": "Gather is the next chapter of that legacy. While Suja's Kitchen remains the guardian of tradition and regional authenticity, Gather was created to take those same values of warmth and generosity and apply them to a global, international stage."
     },
-    "internationalFood": {
-      "title": "International Food, Indian Hospitality",
-      "description": "No Kerala food. No regional bias. But still warm, generous, and attentive."
+    "philosophy": {
+      "title": "The Philosophy: The Host's Mindset",
+      "intro": "We don't see ourselves as a vendor. We are your \"Shadow Host.\"",
+      "body": "Most catering companies are logistics firms. They care about quantities, crates, and timings. We care about the vibe.",
+      "continuation": "Influenced by a lifetime of watching a father who lived to host—where every guest was treated like family and every meal felt like an event—Gather exists to take the responsibility of hosting off your shoulders.",
+      "rule": "The Gather Rule: If there are five or more of you, you shouldn't be a coordinator; you should be the soul of the party. We handle the flow, the timing of the grill, and the aesthetics of the table, so you can focus on the stories that matter."
     },
-    "beautifulSetups": {
-      "title": "Beautiful, Thoughtful Setups Without the Drama",
-      "description": "Not over-the-top. Not cheap-looking. Clean, elegant, and practical."
+    "signature": {
+      "title": "The Signature: Global Palate. Indian Soul.",
+      "body": "The UAE is a melting pot of cultures, and our menu reflects that cosmopolitan spirit. We have intentionally stepped away from regional boundaries—you won't find Kerala meals here. Instead, we offer a refined International menu designed for the modern, diverse palate.",
+      "continuation": "But while the flavors are global, the heart is purely Suja's. It's the \"extra mile\" hospitality that runs in our DNA. It's the attentiveness, the abundance, and the genuine care that ensures no glass is ever empty and no guest is ever ignored."
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "subtitle": "Minimalist Aesthetics. Impeccable Flow.",
+      "body": "We believe in clean, elegant setups that enhance your space rather than cluttering it. Backed by the operational excellence of the Suja's Kitchen group, our coordination is invisible but felt. We arrive with a legacy of 25 years of expertise and leave with nothing but a lingering sense of a perfect evening."
+    },
+    "closing": "You bring the people. We'll bring the soul.",
+    "ctaBox": {
+      "headline": "Planning a gathering of 5 or more?",
+      "subtext": "Don't just feed them. Host them with the confidence of a legacy brand.",
+      "button": "Get in Touch with a Host"
     }
   },
   "services": {
-    "title": "Our Services",
-    "subtitle": "Taking the responsibility of hosting off your shoulders",
-    "eventCatering": {
-      "title": "Event Catering",
-      "description": "Full-service catering for corporate events, celebrations, and special occasions"
+    "title": "The Art of the Gathering",
+    "subtitle": "We don't just \"cater.\" We curate the flow of your life's best moments.",
+    "intro": "At Gather, we specialize in the invisible details—the things you only notice when they are perfect. Whether it's a living room dinner or a corporate rooftop mixer, we take the logistics off your hands and put the hosting back in your heart.",
+    "boutiqueFive": {
+      "num": "01",
+      "title": "The Boutique Five",
+      "subtitle": "Professional Hosting for Intimate Circles",
+      "tagline": "Who says you need a wedding to hire a host? We believe that if five or more people are sitting at a table, it's a special occasion.",
+      "vibe": "The Vibe: Your home, transformed into a private boutique restaurant.",
+      "flow": "The Flow: We handle the setup, the service, and the cleanup. You stay in your seat and enjoy your friends.",
+      "perfectFor": "Perfect for: Milestone birthdays, family reunions, or \"just because\" dinners."
     },
-    "setupDesign": {
-      "title": "Elegant Setups",
-      "description": "Clean, thoughtful table arrangements and venue design"
+    "socialFlow": {
+      "num": "02",
+      "title": "The Social Flow",
+      "subtitle": "Effortless Hosting for Modern Socials",
+      "tagline": "When the guest list grows, the stress shouldn't. We manage the \"rhythm\" of your social event—ensuring the food moves with the crowd and the energy never dips.",
+      "vibe": "The Vibe: High-energy, elegant, and interactive.",
+      "flow": "The Flow: Live stations, tray-passed hors d'oeuvres, and global platters that look as good as they taste.",
+      "perfectFor": "Perfect for: Villa parties, garden gatherings, and rooftop mixers."
     },
-    "coordination": {
-      "title": "Impeccable Coordination",
-      "description": "Seamless flow from guest arrival to final farewell"
+    "corporateConnector": {
+      "num": "03",
+      "title": "The Corporate Connector",
+      "subtitle": "Business Hospitality, Redefined",
+      "tagline": "In the professional world, the meal is where the real work happens. We provide a sophisticated, minimalist setup that facilitates conversation and impresses clients without the cold feel of \"hotel catering.\"",
+      "vibe": "The Vibe: Polished, punctual, and premium.",
+      "flow": "The Flow: Efficient service that respects your schedule while maintaining our signature warmth.",
+      "perfectFor": "Perfect for: Boardroom lunches, brand launches, and office mixers."
     },
-    "menuPlanning": {
-      "title": "Custom Menu Planning",
-      "description": "International cuisine tailored to your event and preferences"
+    "liveRituals": {
+      "num": "04",
+      "title": "Live Rituals & Grills",
+      "subtitle": "There is a Theater to Great Food",
+      "tagline": "The scent of a grill, the sizzle of the flame—there is a reason the kitchen is the heart of every home. Our live stations aren't just buffet lines; they are the heartbeat of your gathering.",
+      "vibe": "The Vibe: Immersive and aromatic.",
+      "flow": "The Flow: Chef-led stations timed to peak exactly when your guests are hungriest.",
+      "perfectFor": "Perfect for: Outdoor events and high-vibe celebrations."
+    },
+    "standards": {
+      "title": "The Gather Standards",
+      "subtitle": "The little things we inherit from our parent brand, Suja's Kitchen",
+      "hostFirst": "Host-First Coordination: We don't ask you where the forks are. We arrive with a plan, a map, and a mission.",
+      "minimalist": "Minimalist Setup: Our aesthetics are clean and modern. We complement your home's decor; we don't override it.",
+      "backbone": "The 25-Year Backbone: Every event is backed by the operational precision of Suja's Kitchen, ensuring that while the brand is new and global, the expertise is deep and proven."
+    },
+    "consult": {
+      "headline": "Not sure which service fits your vibe?",
+      "body": "Let's talk it through. Our team thinks like hosts, not salesmen. We'll help you figure out the flow that fits your space and your guests.",
+      "consultBtn": "Consult with a Host",
+      "menuBtn": "View Our Global Menus"
     }
   },
   "menu": {
-    "title": "Our Menu",
-    "subtitle": "International Cuisine with Indian Hospitality",
-    "appetizers": "Appetizers",
-    "mainCourses": "Main Courses",
-    "desserts": "Desserts",
-    "beverages": "Beverages"
+    "title": "The Global Table",
+    "subtitle": "Quality. Variety. Craft.",
+    "intro": "Every dish is prepared with premium ingredients, meticulous attention to detail, and a commitment to excellence. Our menu spans a world of flavors—from bold and aromatic to refined and elegant—each selection crafted to elevate your gathering.",
+    "introCont": "We believe great food should look like art and taste like a memory. Whether you're hosting an intimate dinner or a larger celebration, our diverse offerings give you the freedom to curate a menu that tells your story.",
+    "heroQuality": "Premium ingredients. Impeccable execution.",
+    "heroVariety": "Three distinct culinary worlds. Hundreds of possibilities.",
+    "heroCraft": "Every dish is prepared with care and presented with intention.",
+    "fullMenuTitle": "The Full Menu",
+    "fullMenuSubtitle": "Browse our complete selection—every item available for your custom curation.",
+    "testimonial1": "The menu was extraordinary. Every dish told a story.",
+    "testimonial2": "The variety and quality blew us away. Sophisticated, flavorful, beautifully presented.",
+    "testimonial3": "From appetizers to desserts—each bite was memorable.",
+    "customizing": {
+      "title": "Customizing Your Gathering",
+      "subtitle": "The 5-Guest Minimum",
+      "body": "Whether you want a formal sit-down dinner or a standing social mixer, our menus are adaptable. We don't believe in \"Set Menu A\" or \"Set Menu B.\" We believe in a conversation.",
+      "vibeLabel": "What's the vibe?",
+      "vibeRelaxed": "Relaxed",
+      "vibeProfessional": "Professional",
+      "vibeHighEnergy": "High-Energy",
+      "settingLabel": "What's the setting?",
+      "settingIndoor": "Indoor Dining",
+      "settingOutdoor": "Outdoor Terrace",
+      "storyLabel": "What story do you want to tell?",
+      "storyCelebration": "Celebration",
+      "storyConnection": "Connection",
+      "storyImpress": "Impress",
+      "storyIntimate": "Intimate",
+      "downloadBtn": "Download Our Full Seasonal Menu",
+      "requestBtn": "Request a Custom Curation"
+    },
+    "ctaTitle": "Ready to Curate Your Menu?",
+    "ctaSubtitle": "Tell us about your gathering. We'll craft a menu that fits perfectly.",
+    "ctaBtn": "Request a Custom Curation"
   },
   "contact": {
     "title": "Get in Touch",

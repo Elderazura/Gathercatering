@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/lib/routing';
+import { Link, usePathname } from '@/lib/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -10,7 +10,6 @@ export default function Navigation() {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -24,11 +23,9 @@ export default function Navigation() {
 
   const toggleLanguage = () => {
     const newLocale = locale === 'en' ? 'ar' : 'en';
-    // next-intl's usePathname returns path without locale prefix
-    // So pathname is like '/' or '/about', not '/en/about'
     const cleanPath = pathname === '/' ? '' : pathname;
     const newPath = `/${newLocale}${cleanPath}`;
-    router.push(newPath);
+    window.location.href = newPath;
   };
 
   const navItems = [
@@ -42,10 +39,11 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      aria-label="Main navigation"
+      className={`fixed top-0 left-0 right-0 z-50 pointer-events-auto transition-all duration-300 ${
         isScrolled
           ? 'bg-white shadow-lg'
-          : 'bg-transparent'
+          : 'bg-black/30 backdrop-blur-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -135,6 +133,7 @@ export default function Navigation() {
               </Link>
             ))}
             <button
+              type="button"
               onClick={toggleLanguage}
               className={`px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-medium transition-colors ${
                 isScrolled
@@ -146,10 +145,13 @@ export default function Navigation() {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile/Tablet Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-md ${
+            type="button"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+            className={`lg:hidden p-2 rounded-md min-h-[44px] min-w-[44px] ${
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}
           >
@@ -197,6 +199,7 @@ export default function Navigation() {
                 </Link>
               ))}
               <button
+                type="button"
                 onClick={toggleLanguage}
                 className="block w-full text-left px-3 py-2 rounded-md text-base font-medium bg-primary text-white hover:bg-opacity-90"
               >

@@ -3,23 +3,71 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { routing } from '@/lib/routing';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
+import { siteConfig, pageMetadata } from '@/lib/seo';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+const siteUrl = siteConfig.url;
+const defaultMeta = pageMetadata.home;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const ogLocale = locale === 'ar' ? 'ar_AE' : 'en_AE';
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: defaultMeta.title,
+      template: `%s | ${siteConfig.name}`,
+    },
+    description: defaultMeta.description,
+    keywords: siteConfig.keywords,
+    authors: [{ name: siteConfig.name }],
+    creator: siteConfig.name,
+    robots: { index: true, follow: true },
+    openGraph: {
+      type: 'website',
+      locale: ogLocale,
+      url: siteUrl,
+      siteName: siteConfig.name,
+      title: defaultMeta.title,
+      description: defaultMeta.description,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: defaultMeta.title,
+      description: defaultMeta.description,
+    },
+    alternates: {
+      canonical: siteUrl,
+    },
+  };
+}
+
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as 'en' | 'ar')) {
     notFound();
   }
 
@@ -29,20 +77,24 @@ export default async function LocaleLayout({
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Gather Catering - Premium catering services in Dubai & Abu Dhabi, UAE. International cuisine with Indian hospitality. Host with confidence." />
-        <meta name="keywords" content="catering Dubai, catering Abu Dhabi, event catering UAE, corporate catering, wedding catering Dubai" />
-        <meta name="author" content="Gather Catering" />
-        <meta property="og:title" content="Gather Catering - Premium Catering Services in UAE" />
-        <meta property="og:description" content="Great gatherings are not just about food, but about how people are brought together" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content={locale === 'ar' ? 'ar_AE' : 'en_AE'} />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#04544A" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/logos/Logo_Green.png" />
+        <JsonLd />
       </head>
-      <body className={locale === 'ar' ? 'rtl' : ''} style={{ background: '#ffffff', margin: 0, padding: 0, overflowX: 'hidden' }}>
+      <body
+        className={locale === 'ar' ? 'rtl' : ''}
+        style={{ background: '#ffffff', margin: 0, padding: 0, overflowX: 'hidden' }}
+      >
         <NextIntlClientProvider messages={messages}>
           <Navigation />
-          <main style={{ margin: 0, padding: 0, background: '#ffffff', minHeight: '100vh' }}>{children}</main>
+          <main
+            role="main"
+            style={{ margin: 0, padding: 0, background: '#ffffff', minHeight: '100vh' }}
+          >
+            {children}
+          </main>
           <Footer />
         </NextIntlClientProvider>
       </body>

@@ -9,9 +9,10 @@ interface BannerProps {
   variant?: 'primary' | 'secondary' | 'light';
   className?: string;
   backgroundImage?: string;
+  id?: string;
 }
 
-export default function Banner({ children, variant = 'primary', className = '', backgroundImage }: BannerProps) {
+export default function Banner({ children, variant = 'primary', className = '', backgroundImage, id }: BannerProps) {
   const variants = {
     primary: 'bg-primary text-white',
     secondary: 'bg-secondary text-white',
@@ -20,6 +21,7 @@ export default function Banner({ children, variant = 'primary', className = '', 
 
   return (
     <motion.section
+      id={id}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

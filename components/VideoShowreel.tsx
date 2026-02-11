@@ -1,22 +1,48 @@
 'use client';
 
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface VideoShowreelProps {
-  videoUrl: string;
+  videoSrc?: string;
   title?: string;
 }
 
-export default function VideoShowreel({ videoUrl, title = 'Our Work Showreel' }: VideoShowreelProps) {
-  // Convert YouTube URL to embed format
-  const getEmbedUrl = (url: string) => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    const videoId = match && match[2].length === 11 ? match[2] : null;
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
-  };
+export default function VideoShowreel({
+  videoSrc = '/media/videos/gather-2-video-01.mp4',
+  title = 'Our Work Showreel',
+}: VideoShowreelProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
-  const embedUrl = getEmbedUrl(videoUrl);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isPlaying) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = isMuted;
+  }, [isMuted]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
+
+  const togglePlay = () => setIsPlaying((p) => !p);
+  const toggleMute = () => setIsMuted((m) => !m);
 
   return (
     <motion.section
@@ -36,16 +62,49 @@ export default function VideoShowreel({ videoUrl, title = 'Our Work Showreel' }:
             Experience the essence of Gather Catering
           </p>
         </div>
-        <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl mx-2 sm:mx-0">
-          <iframe
-            src={embedUrl}
+        <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl mx-2 sm:mx-0 bg-black">
+          <video
+            ref={videoRef}
+            src={videoSrc}
             title={title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-            className="absolute inset-0 w-full h-full"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
           />
+          <div className="absolute bottom-4 right-4 flex items-center gap-2 z-10">
+            <Button
+              type="button"
+              variant="secondary"
+              size="icon"
+              className="h-10 w-10 rounded-full bg-black/50 hover:bg-black/70 text-white border-0"
+              onClick={togglePlay}
+              aria-label={isPlaying ? 'Pause' : 'Play'}
+            >
+              {isPlaying ? (
+                <Pause className="h-5 w-5" />
+              ) : (
+                <Play className="h-5 w-5" />
+              )}
+            </Button>
+            <Button
+              type="button"
+              variant="secondary"
+              size="icon"
+              className="h-10 w-10 rounded-full bg-black/50 hover:bg-black/70 text-white border-0"
+              onClick={toggleMute}
+              aria-label={isMuted ? 'Unmute' : 'Mute'}
+            >
+              {isMuted ? (
+                <VolumeX className="h-5 w-5" />
+              ) : (
+                <Volume2 className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
     </motion.section>

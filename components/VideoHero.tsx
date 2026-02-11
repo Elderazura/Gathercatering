@@ -4,24 +4,27 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/lib/routing';
 import { useEffect, useRef } from 'react';
+import { Button } from '@/components/ui/button';
+import { ChevronDown } from 'lucide-react';
 
 export default function VideoHero() {
   const t = useTranslations('hero');
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Ensure video plays
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay was prevented, user interaction required
-      });
+      videoRef.current.play().catch(() => {});
     }
   }, []);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden" style={{ margin: 0, padding: 0 }}>
-      {/* Hero Video Background */}
-      <div className="absolute inset-0 w-full h-full z-0">
+    <section
+      className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden"
+      style={{ margin: 0, padding: 0 }}
+      aria-label="Hero"
+    >
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
           autoPlay
@@ -29,79 +32,104 @@ export default function VideoHero() {
           muted
           playsInline
           preload="metadata"
-          poster="/images/hero/Hero 1.jpeg"
-          className="w-full h-full object-cover"
-          style={{ objectFit: 'cover' }}
+          poster="/images/gather/food/gather-pics-28.jpg"
+          className="h-full w-full object-cover"
         >
-          <source src="/images/hero/herovideo.webm" type="video/webm" />
-          {/* Fallback image if video doesn't load */}
+          <source src="/media/hero1.mp4" type="video/mp4" />
           <img
-            src="/images/hero/Hero 1.jpeg"
-            alt="Gather Catering Hero"
-            className="w-full h-full object-cover"
+            src="/images/gather/food/gather-pics-28.jpg"
+            alt=""
+            className="h-full w-full object-cover"
           />
         </video>
       </div>
 
-      {/* Overlay - Removed green gradient, using subtle dark overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-30 z-[1]" />
 
-      {/* Content - Properly layered */}
-      <div className="relative z-[2] flex items-center justify-center h-full">
-        <div className="text-center text-white px-4 sm:px-6 lg:px-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+      {/* Content */}
+      <div className="relative z-[2] flex h-full flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Eyebrow / Location */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 relative z-[3] leading-tight"
+            transition={{ duration: 0.6 }}
+            className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-white/90"
+          >
+            {t('location')}
+          </motion.p>
+
+          {/* Decorative line */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-8 h-px w-16 bg-white/60 mx-auto origin-center"
+          />
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-4xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] leading-[1.1]"
           >
             {t('title')}
           </motion.h1>
+
+          {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto px-2 relative z-[3] leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto mt-6 max-w-2xl text-lg text-white/95 sm:text-xl md:text-2xl leading-relaxed"
           >
             {t('subtitle')}
           </motion.p>
+
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative z-[3]"
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <Link
-              href="/contact"
-              className="inline-block bg-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 touch-manipulation"
-            >
-              {t('cta')}
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="min-w-[180px] bg-white text-primary hover:bg-white/95 hover:text-primary"
+              >
+                {t('cta')}
+              </Button>
+            </Link>
+            <Link href="/menu">
+              <Button
+                variant="outline"
+                size="lg"
+                className="min-w-[180px] border-white/60 text-white hover:bg-white/10 hover:border-white hover:text-white"
+              >
+                View Menu
+              </Button>
             </Link>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-[3]"
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="absolute bottom-6 left-1/2 z-[2] -translate-x-1/2"
       >
-        <div className="animate-bounce">
-          <svg
-            className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
+        <a
+          href="#why"
+          className="flex flex-col items-center gap-1 text-white/70 transition-colors hover:text-white"
+          aria-label="Scroll to content"
+        >
+          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <ChevronDown className="h-5 w-5 animate-bounce" strokeWidth={2} />
+        </a>
       </motion.div>
-    </div>
+    </section>
   );
 }

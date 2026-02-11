@@ -14,12 +14,12 @@ export default function InstagramFeed() {
   // Using available images as Instagram feed placeholders
   // In production, this would fetch from Instagram API
   const posts: InstagramPost[] = [
-    { id: '1', image: '/media/images/1e1.jpeg', alt: 'Gather Catering Instagram Post' },
-    { id: '2', image: '/media/images/1e2.jpeg', alt: 'Gather Catering Instagram Post' },
-    { id: '3', image: '/media/images/1e3.jpeg', alt: 'Gather Catering Instagram Post' },
-    { id: '4', image: '/media/images/1e4.jpeg', alt: 'Gather Catering Instagram Post' },
-    { id: '5', image: '/media/images/1e5.jpeg', alt: 'Gather Catering Instagram Post' },
-    { id: '6', image: '/media/images/1e6.jpeg', alt: 'Gather Catering Instagram Post' },
+    { id: '1', image: '/images/gather/food/gather-pics-28.jpg', alt: 'Gather Catering Instagram Post' },
+    { id: '2', image: '/images/gather/food/gather-pics-29.jpg', alt: 'Gather Catering Instagram Post' },
+    { id: '3', image: '/images/gather/food/gather-pics-30.jpg', alt: 'Gather Catering Instagram Post' },
+    { id: '4', image: '/images/gather/food/gather-pics-31.jpg', alt: 'Gather Catering Instagram Post' },
+    { id: '5', image: '/images/gather/food/gather-pics-32.jpg', alt: 'Gather Catering Instagram Post' },
+    { id: '6', image: '/images/gather/food/gather-pics-33.jpg', alt: 'Gather Catering Instagram Post' },
   ];
 
   return (
