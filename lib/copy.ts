@@ -182,9 +182,9 @@ export const menusCopy = {
         "Balanced, aromatic dishes from across Asia, served with precision.",
     },
     {
-      name: "Modern Indian",
+      name: "Spiced & Aromatic",
       description:
-        "Contemporary Indian cuisine—not regional, but globally refined.",
+        "Contemporary spiced cuisine—not regional, but globally refined.",
     },
     {
       name: "Grill & Live Counter",
@@ -226,8 +226,8 @@ export const menusCopy = {
       ],
     },
     {
-      title: "Modern Indian Feast",
-      category: "Modern Indian",
+      title: "Spiced & Aromatic Feast",
+      category: "Spiced & Aromatic",
       items: [
         "Tandoori Cauliflower with Mint Chutney",
         "Butter Chicken with Basmati Rice",

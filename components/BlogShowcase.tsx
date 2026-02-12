@@ -25,7 +25,7 @@ export default function BlogShowcase() {
     },
     {
       id: 2,
-      title: 'International Flavors with Indian Hospitality',
+      title: 'International Flavors with Warm Hospitality',
       excerpt: 'How we blend global cuisines with warm, attentive service that makes every guest feel special.',
       image: '/images/gather/food/gather-pics-36.jpg',
       date: '2024-01-10',

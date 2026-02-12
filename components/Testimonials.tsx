@@ -20,7 +20,7 @@ export default function Testimonials() {
       name: 'Sarah Al Mansoori',
       role: 'Event Coordinator',
       company: 'Dubai Events',
-      content: 'Gather Catering transformed our corporate event. Their attention to detail and seamless coordination allowed us to focus on our guests. The international menu with Indian hospitality was a perfect blend.',
+      content: 'Gather Catering transformed our corporate event. Their attention to detail and seamless coordination allowed us to focus on our guests. The international menu with warm hospitality was a perfect blend.',
       rating: 5,
     },
     {

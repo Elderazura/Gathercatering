@@ -195,7 +195,7 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl p-6 border border-[#E8E6E3]">
                 <h3 className="text-xl font-bold text-primary mb-4">Why Gather Cater?</h3>
                 <ul className="space-y-3">
-                  {['Host\'s mindset in every detail', 'International cuisine with Indian hospitality', 'Elegant setups without the drama', 'Serving Dubai, Abu Dhabi & UAE', 'Impeccable coordination'].map((point, i) => (
+                  {['Host\'s mindset in every detail', 'International cuisine with warm hospitality', 'Elegant setups without the drama', 'Serving Dubai, Abu Dhabi & UAE', 'Impeccable coordination'].map((point, i) => (
                     <li key={i} className="flex gap-3 text-gray-700">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                       <span>{point}</span>
