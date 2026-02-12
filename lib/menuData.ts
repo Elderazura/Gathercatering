@@ -65,7 +65,7 @@ export const menuData: MenuCuisine[] = [
         items: [
           "Appam / Kallapam",
           "Idiappam",
-          "Kerala Parotta",
+          "Parotta",
           "Coin Parotta",
           "Nool Parotta",
           "Thattu Dosa",
