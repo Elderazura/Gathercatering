@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="relative w-28 sm:w-32 h-8 sm:h-10 mb-3 sm:mb-4">
               <Image
                 src="/logos/Logo_white.png"
-                alt="Gather Catering"
+                alt="Gather Cater"
                 fill
                 className="object-contain"
                 sizes="(max-width: 640px) 112px, 128px"
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-sm sm:text-base text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Gather Catering. {t('rights')}</p>
+          <p>&copy; {new Date().getFullYear()} Gather Cater. {t('rights')}</p>
         </div>
       </div>
     </footer>

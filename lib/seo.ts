@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: 'Gather Catering',
+  name: 'Gather Cater',
   description:
-    'Premium catering in Dubai & Abu Dhabi, UAE. International menus, elegant setups, warm hospitality. We host gatherings, not just cater events. Boutique events, corporate catering, weddings.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://gathercatering.ae',
+    'Premium catering in Dubai & Abu Dhabi, UAE. International menus, elegant setups, warm hospitality. We host gatherings with warmth and intimacy. Boutique events, corporate catering, weddings.',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://gathercater.ae',
   ogImage: '/images/gather/food/gather-pics-28.jpg',
   locale: 'en_AE',
   locales: ['en', 'ar'] as const,
@@ -19,10 +19,11 @@ export const siteConfig = {
     'gathering catering',
   ],
   social: {
-    email: 'contact@gathercatering.ae',
+    email: 'contact@gathercater.ae',
+    whatsapp: 'https://wa.me/971521268484',
   },
   business: {
-    name: 'Gather Catering',
+    name: 'Gather Cater',
     type: 'LocalBusiness',
     areaServed: ['Dubai', 'Abu Dhabi', 'UAE'],
     description: 'Premium catering and hosting services in Dubai and Abu Dhabi. International menus, elegant setups, warm hospitality.',
@@ -31,14 +32,14 @@ export const siteConfig = {
 
 export const pageMetadata: Record<string, { title: string; description: string }> = {
   home: {
-    title: 'Premium Catering Dubai & Abu Dhabi | Gather Catering',
+    title: 'Premium Catering Dubai & Abu Dhabi | Gather Cater',
     description:
-      'Everyone feeds. Few truly host. Premium catering in Dubai & Abu Dhabi with international menus, elegant setups, and warm hospitality. Host gatherings with confidence.',
+      'Host with warmth and confidence. Premium catering in Dubai & Abu Dhabi with international menus, elegant setups, and genuine hospitality. Gather Cater brings people together.',
   },
   about: {
-    title: 'About Us | Gather Catering Dubai & Abu Dhabi',
+    title: 'About Us | Gather Cater Dubai & Abu Dhabi',
     description:
-      'Inherited warmth, international flavor. Learn about Gather Catering—premium catering in Dubai & Abu Dhabi backed by 25 years of hospitality excellence.',
+      'Inherited warmth, international flavor. Learn about Gather Cater—premium catering in Dubai & Abu Dhabi backed by 27 years of hospitality excellence.',
   },
   services: {
     title: 'Catering Services | Boutique, Corporate & Events',
@@ -53,11 +54,11 @@ export const pageMetadata: Record<string, { title: string; description: string }
   contact: {
     title: 'Contact | Get in Touch',
     description:
-      "Let's plan your perfect gathering. Contact Gather Catering for premium catering in Dubai & Abu Dhabi. Enquire about your event.",
+      "Let's plan your perfect gathering. Contact Gather Cater for premium catering in Dubai & Abu Dhabi. Enquire about your event.",
   },
   blog: {
     title: 'Blog | Stories & Insights',
     description:
-      'Stories and insights about hosting great gatherings. Tips, inspiration, and updates from Gather Catering.',
+      'Stories and insights about hosting great gatherings. Tips, inspiration, and updates from Gather Cater.',
   },
 };

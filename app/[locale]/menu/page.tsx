@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ArrowRight, Sun, Briefcase, Zap, Home, Trees, Sparkles, Heart, Star, Users } from 'lucide-react';
+import { ChevronRight, ArrowRight, Sun, Briefcase, Zap, Home, Trees, Sparkles, Heart, Star, Users, MessageCircle, Waves, Building2 } from 'lucide-react';
 import { Link } from '@/lib/routing';
 import { Button } from '@/components/ui/button';
 import { gatherImages } from '@/lib/constants';
+import { siteConfig } from '@/lib/seo';
 import { menuData } from '@/lib/menuData';
 import {
   Accordion,
@@ -59,11 +60,17 @@ export default function MenuPage() {
                   {t('customizing.requestBtn')}
                 </Button>
               </Link>
-              <Link href="/contact">
+              <a
+                href={`${siteConfig.social.whatsapp}?text=Hi%2C%20I'd%20like%20to%20receive%20the%20Gather%20menu`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex"
+              >
                 <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 rounded-full w-full sm:w-auto">
-                  {t('customizing.downloadBtn')}
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  {t('customizing.menuWhatsAppBtn')}
                 </Button>
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -165,7 +172,7 @@ export default function MenuPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { key: 'vibeRelaxed', icon: Sun },
+                  { key: 'vibeCasual', icon: Sun },
                   { key: 'vibeProfessional', icon: Briefcase },
                   { key: 'vibeHighEnergy', icon: Zap },
                 ].map(({ key, icon: Icon }) => (
@@ -197,6 +204,9 @@ export default function MenuPage() {
                 {[
                   { key: 'settingIndoor', icon: Home },
                   { key: 'settingOutdoor', icon: Trees },
+                  { key: 'settingDesert', icon: Sun },
+                  { key: 'settingPool', icon: Waves },
+                  { key: 'settingRooftop', icon: Building2 },
                 ].map(({ key, icon: Icon }) => (
                   <motion.button
                     key={key}
@@ -258,11 +268,17 @@ export default function MenuPage() {
                   {t('customizing.requestBtn')}
                 </Button>
               </Link>
-              <Link href="/contact">
+              <a
+                href={`${siteConfig.social.whatsapp}?text=Hi%2C%20I'd%20like%20to%20receive%20the%20Gather%20menu`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex"
+              >
                 <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 rounded-full w-full sm:w-auto">
-                  {t('customizing.downloadBtn')}
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  {t('customizing.menuWhatsAppBtn')}
                 </Button>
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>

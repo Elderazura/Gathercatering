@@ -46,7 +46,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-start gap-12 md:gap-16">
             <motion.div {...fadeIn} className="md:w-24 shrink-0">
-              <span className="text-6xl md:text-7xl font-bold text-primary/20">25</span>
+              <span className="text-6xl md:text-7xl font-bold text-primary/20">27</span>
               <span className="block text-sm font-medium text-primary mt-1">years</span>
             </motion.div>
             <motion.div {...fadeIn} transition={{ delay: 0.1 }}>

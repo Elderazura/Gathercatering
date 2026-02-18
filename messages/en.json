@@ -8,28 +8,28 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Everyone feeds. Few truly host.",
-    "subtitle": "We don't deliver a menu—we inherit your responsibility. You're the soul of the party, not the coordinator.",
+    "title": "Host with warmth. Gather with joy.",
+    "subtitle": "We bring the soul of hosting to your table. You're the heart of the party—we handle the rest.",
     "cta": "Host Your First Gathering",
     "location": "Dubai & Abu Dhabi"
   },
   "why": {
     "headline": "If there are 5 of you, it's a gathering.",
-    "body": "In the UAE, we've forgotten the art of the small get-together. We think professional hosting is only for weddings and gala dinners. We disagree. If you've invited four friends over, you shouldn't be stuck behind a cutting board. From the moment the first guest rings the bell to the final clink of a glass, we manage the rhythm, the flow, and the flavor.",
+    "body": "Professional hosting isn't just for weddings and gala dinners. When you've invited friends over, you deserve to be present—not stuck behind a cutting board. From the moment the first guest rings the bell to the final clink of a glass, we manage the rhythm, the flow, and the flavor so you can simply enjoy.",
     "cta": "About: The Soul of Gather"
   },
   "dna": {
     "headline": "A Legacy of Warmth",
-    "body": "Gather was created to fill a gap in the UAE market: the need for high-end, international catering served with a \"Host's Mindset\" rather than a \"Vendor's Mindset.\" We've stripped away the regional boundaries and the \"industrial\" feel of traditional catering.",
+    "body": "Gather was created to bring high-end, international catering with a Host's Mindset—where warmth and intimacy come first. Our approach is personal, thoughtful, and designed for the modern UAE.",
     "cta": "The Menu & Experience"
   },
   "international": {
-    "headline": "Global by Design. Radical in Hospitality.",
-    "body": "We don't do \"standard.\" Our menus are a passport to international flavors, curated specifically for the sophisticated, diverse palate of the UAE. We've stripped away the regional biases and the predictable catering tropes to deliver bold, global excellence."
+    "headline": "Global by Design. Warm in Hospitality.",
+    "body": "Our menus are a passport to international flavors, curated for the sophisticated, diverse palate of the UAE. Bold, global excellence—served with genuine care."
   },
   "hostMindset": {
-    "title": "Most Caterers think about...",
-    "subtitle": "Gather thinks about...",
+    "title": "Caterers often think about...",
+    "subtitle": "Gather focuses on...",
     "row1": {
       "caterers": "How many plates?",
       "gather": "How do guests feel when they arrive?"
@@ -64,6 +64,14 @@
     },
     "cta": "View All Services"
   },
+  "leadGen": {
+    "headline": "Plan Your Gathering",
+    "subheadline": "Share your details and we'll get in touch within 24 hours.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "submit": "Get Started"
+  },
   "closing": {
     "headline": "You bring the people. We'll bring the soul.",
     "cta": "Get Started"
@@ -74,25 +82,25 @@
     "legacy": {
       "title": "The Legacy: Rooted in Suja's Kitchen",
       "intro": "Before Gather, there was Suja's Kitchen.",
-      "body": "Founded in 1999 by Mrs. Suja Alex, Suja's Kitchen began as a humble home project in the UAE, fueled by a passion for authentic, soul-deep flavors. For over 25 years, it has been a beacon of culinary heritage, growing from a single stove into a trusted catering institution known for its \"mother's touch\" and uncompromising quality.",
+      "body": "Founded in 1999 by Mrs. Suja Alex, Suja's Kitchen began as a humble home project in the UAE, fueled by a passion for authentic, soul-deep flavors. For over 27 years, it has been a beacon of culinary heritage, growing from a single stove into a trusted catering institution known for its \"mother's touch\" and uncompromising quality.",
       "continuation": "Gather is the next chapter of that legacy. While Suja's Kitchen remains the guardian of tradition and regional authenticity, Gather was created to take those same values of warmth and generosity and apply them to a global, international stage."
     },
     "philosophy": {
       "title": "The Philosophy: The Host's Mindset",
-      "intro": "We don't see ourselves as a vendor. We are your \"Shadow Host.\"",
-      "body": "Most catering companies are logistics firms. They care about quantities, crates, and timings. We care about the vibe.",
-      "continuation": "Influenced by a lifetime of watching a father who lived to host—where every guest was treated like family and every meal felt like an event—Gather exists to take the responsibility of hosting off your shoulders.",
+      "intro": "We see ourselves as your Shadow Host.",
+      "body": "Gather was born from a simple truth: weekends were for hosting. Jacob grew up watching his father welcome friends, set the table, and create moments that mattered. Every guest was family. Every meal was an event. That warmth—rooted in Suja's Kitchen—is what we bring to your gathering.",
+      "continuation": "We exist to take the responsibility of hosting off your shoulders, so you can be present for the stories that matter.",
       "rule": "The Gather Rule: If there are five or more of you, you shouldn't be a coordinator; you should be the soul of the party. We handle the flow, the timing of the grill, and the aesthetics of the table, so you can focus on the stories that matter."
     },
     "signature": {
       "title": "The Signature: Global Palate. Warm Soul.",
-      "body": "The UAE is a melting pot of cultures, and our menu reflects that cosmopolitan spirit. We have intentionally stepped away from regional boundaries. Instead, we offer a refined International menu designed for the modern, diverse palate.",
+      "body": "The UAE is a melting pot of cultures, and our menu reflects that cosmopolitan spirit. We offer a refined International menu designed for the modern, diverse palate.",
       "continuation": "But while the flavors are global, the heart is purely Suja's. It's the \"extra mile\" hospitality that runs in our DNA. It's the attentiveness, the abundance, and the genuine care that ensures no glass is ever empty and no guest is ever ignored."
     },
     "commitment": {
       "title": "Our Commitment",
       "subtitle": "Minimalist Aesthetics. Impeccable Flow.",
-      "body": "We believe in clean, elegant setups that enhance your space rather than cluttering it. Backed by the operational excellence of the Suja's Kitchen group, our coordination is invisible but felt. We arrive with a legacy of 25 years of expertise and leave with nothing but a lingering sense of a perfect evening."
+      "body": "We believe in clean, elegant setups that enhance your space rather than cluttering it. Backed by the operational excellence of the Suja's Kitchen group, our coordination is invisible but felt. We arrive with a legacy of 27 years of expertise and leave with nothing but a lingering sense of a perfect evening."
     },
     "closing": "You bring the people. We'll bring the soul.",
     "ctaBox": {
@@ -146,7 +154,7 @@
       "subtitle": "The little things we inherit from our parent brand, Suja's Kitchen",
       "hostFirst": "Host-First Coordination: We don't ask you where the forks are. We arrive with a plan, a map, and a mission.",
       "minimalist": "Minimalist Setup: Our aesthetics are clean and modern. We complement your home's decor; we don't override it.",
-      "backbone": "The 25-Year Backbone: Every event is backed by the operational precision of Suja's Kitchen, ensuring that while the brand is new and global, the expertise is deep and proven."
+      "backbone": "The 27-Year Backbone: Every event is backed by the operational precision of Suja's Kitchen, ensuring that while the brand is new and global, the expertise is deep and proven."
     },
     "consult": {
       "headline": "Not sure which service fits your vibe?",
@@ -173,18 +181,21 @@
       "subtitle": "The 5-Guest Minimum",
       "body": "Whether you want a formal sit-down dinner or a standing social mixer, our menus are adaptable. We don't believe in \"Set Menu A\" or \"Set Menu B.\" We believe in a conversation.",
       "vibeLabel": "What's the vibe?",
-      "vibeRelaxed": "Relaxed",
+      "vibeCasual": "Casual",
       "vibeProfessional": "Professional",
       "vibeHighEnergy": "High-Energy",
       "settingLabel": "What's the setting?",
       "settingIndoor": "Indoor Dining",
       "settingOutdoor": "Outdoor Terrace",
+      "settingDesert": "Desert",
+      "settingPool": "Pool",
+      "settingRooftop": "Rooftop",
       "storyLabel": "What story do you want to tell?",
       "storyCelebration": "Celebration",
       "storyConnection": "Connection",
       "storyImpress": "Impress",
       "storyIntimate": "Intimate",
-      "downloadBtn": "Download Our Full Seasonal Menu",
+      "menuWhatsAppBtn": "Get Menu via WhatsApp",
       "requestBtn": "Request a Custom Curation"
     },
     "ctaTitle": "Ready to Curate Your Menu?",
@@ -213,7 +224,7 @@
     "description": "Taking the responsibility of hosting off your shoulders",
     "quickLinks": "Quick Links",
     "contact": "Contact",
-    "email": "contact@gathercatering.ae",
+    "email": "contact@gathercater.ae",
     "rights": "All rights reserved"
   }
 }

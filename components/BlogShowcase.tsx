@@ -77,7 +77,7 @@ export default function BlogShowcase() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow group"
             >
-              <Link href={`/blog#${post.slug}`} className="block">
+              <Link href="/contact" className="block">
                 <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                   <Image
                     src={post.image}

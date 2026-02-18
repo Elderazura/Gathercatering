@@ -44,7 +44,7 @@ export default function ContactPage() {
   };
 
   const contactInfo = [
-    { Icon: Mail, title: 'Email', content: 'contact@gathercatering.ae', link: 'mailto:contact@gathercatering.ae' },
+    { Icon: Mail, title: 'Email', content: 'contact@gathercater.ae', link: 'mailto:contact@gathercater.ae' },
     { Icon: MapPin, title: 'Location', content: 'Dubai & Abu Dhabi, UAE', link: null },
     { Icon: Clock, title: 'Response Time', content: 'Within 24 hours', link: null },
   ];

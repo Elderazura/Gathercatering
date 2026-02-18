@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import VideoHero from '@/components/VideoHero';
@@ -31,6 +32,26 @@ const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0
 
 export default function HomePage() {
   const t = useTranslations();
+  const [leadForm, setLeadForm] = useState({ name: '', email: '', phone: '' });
+  const [leadStatus, setLeadStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLeadStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...leadForm, message: 'Home page lead - interested in planning a gathering' }),
+      });
+      if (res.ok) {
+        setLeadStatus('success');
+        setLeadForm({ name: '', email: '', phone: '' });
+      } else setLeadStatus('error');
+    } catch {
+      setLeadStatus('error');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -270,6 +291,50 @@ export default function HomePage() {
       </ParallaxSection>
 
       <Testimonials />
+
+      {/* Lead Gen Form */}
+      <section id="lead" className="py-20 md:py-28 bg-white" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-10">
+            <h2 className="text-2xl md:text-4xl font-bold text-primary mb-3">
+              {t('leadGen.headline')}
+            </h2>
+            <p className="text-gray-600">{t('leadGen.subheadline')}</p>
+          </motion.div>
+          <motion.form {...fadeUp} transition={{ delay: 0.1 }} onSubmit={handleLeadSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="name"
+              placeholder={t('leadGen.name')}
+              value={leadForm.name}
+              onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+              required
+              className="w-full px-4 py-3 rounded-full border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder={t('leadGen.email')}
+              value={leadForm.email}
+              onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+              required
+              className="w-full px-4 py-3 rounded-full border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder={t('leadGen.phone')}
+              value={leadForm.phone}
+              onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
+              className="w-full px-4 py-3 rounded-full border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            />
+            <Button type="submit" size="lg" disabled={leadStatus === 'loading'} className="w-full rounded-full py-6">
+              {leadStatus === 'loading' ? 'Sending...' : leadStatus === 'success' ? 'Thank you!' : t('leadGen.submit')}
+            </Button>
+            {leadStatus === 'error' && <p className="text-sm text-red-600 text-center">Something went wrong. Please try again.</p>}
+          </motion.form>
+        </div>
+      </section>
 
       <ParallaxSection speed={0.12}>
         <BlogShowcase />

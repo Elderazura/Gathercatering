@@ -63,7 +63,7 @@ export default function Navigation() {
                   >
                     <Image
                       src="/logos/Logo_Green.png"
-                      alt="Gather Catering"
+                      alt="Gather Cater"
                       fill
                       className="object-contain"
                       priority
@@ -92,7 +92,7 @@ export default function Navigation() {
                   >
                     <Image
                       src="/logos/Logo_white.png"
-                      alt="Gather Catering"
+                      alt="Gather Cater"
                       fill
                       className="object-contain"
                       priority
