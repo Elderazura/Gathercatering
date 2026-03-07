@@ -4,10 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import VideoHero from '@/components/VideoHero';
-import ParallaxImageSection from '@/components/ParallaxImageSection';
 import ParallaxSection from '@/components/ParallaxSection';
-import VideoShowreel from '@/components/VideoShowreel';
-import InstagramFeed from '@/components/InstagramFeed';
 import Testimonials from '@/components/Testimonials';
 import BlogShowcase from '@/components/BlogShowcase';
 import { Link } from '@/lib/routing';
@@ -57,71 +54,43 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <VideoHero />
 
-      {/* The Why - Asymmetric bento with large image */}
+      {/* Brand Story */}
       <section id="why" className="py-20 md:py-28 bg-[#F8F7F5]" style={{ margin: 0, border: 'none' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
-              <span className="text-primary font-semibold text-xs uppercase tracking-[0.25em] mb-6 block">
-                The Soul of Gather
-              </span>
               <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-primary leading-[1.15] mb-6">
                 {t('why.headline')}
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-10 max-w-xl">
+              <p className="text-lg text-gray-700 leading-relaxed mb-6 max-w-xl">
                 {t('why.body')}
               </p>
-              <Link href="/about">
-                <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 rounded-full px-8">
-                  {t('why.cta')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+              <p className="text-lg text-gray-700 leading-relaxed mb-10 max-w-xl">
+                {t('dna.body')}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/about">
+                  <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 rounded-full px-8">
+                    {t('why.cta')}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/menu">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 rounded-full px-8 group">
+                    {t('dna.cta')}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl ring-1 ring-black/5">
                 <img
                   src={gatherImages.gallery[0]}
-                  alt="Gather Catering"
+                  alt="Gather Cater"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-40 h-40 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden md:block">
-                <img src={gatherImages.gallery[1]} alt="" className="h-full w-full object-cover" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* DNA - Image left, content right */}
-      <section id="dna" className="py-20 md:py-28 bg-white" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="order-2 lg:order-1">
-              <ParallaxImageSection
-                src="/images/gather/food/legacy-of-warmth.png"
-                alt="Gather Catering - Legacy of Warmth"
-                orientation="landscape"
-                speed={0.3}
-              />
-            </motion.div>
-            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="order-1 lg:order-2">
-              <span className="text-primary font-semibold text-xs uppercase tracking-[0.25em] mb-6 block">
-                Our DNA
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary leading-tight mb-6">
-                {t('dna.headline')}
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-10">
-                {t('dna.body')}
-              </p>
-              <Link href="/menu">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 rounded-full px-8 group">
-                  {t('dna.cta')}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
             </motion.div>
           </div>
         </div>
@@ -230,30 +199,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mid-page CTA */}
-      <section className="py-20 md:py-24 bg-[#A38A7A] text-white" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 {...fadeUp} className="text-2xl md:text-3xl font-bold mb-4">
-            Ready to host your first gathering?
-          </motion.h2>
-          <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="text-lg opacity-95 mb-8">
-            Let&apos;s design an experience that feels like you.
-          </motion.p>
-          <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-            <Link href="/contact">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10">
-                Get in Touch
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Video Showreel */}
-      <ParallaxSection speed={0.15}>
-        <VideoShowreel title="Our Work Showreel" />
-      </ParallaxSection>
 
       {/* Gallery */}
       <section className="py-20 md:py-24 bg-white" style={{ margin: 0, border: 'none' }}>
@@ -277,7 +222,7 @@ export default function HomePage() {
               >
                 <img
                   src={src}
-                  alt="Gather Catering"
+                  alt="Gather Cater"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </motion.div>
@@ -285,10 +230,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <ParallaxSection speed={0.15}>
-        <InstagramFeed />
-      </ParallaxSection>
 
       <Testimonials />
 

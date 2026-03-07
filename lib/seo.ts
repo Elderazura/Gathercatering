@@ -61,4 +61,9 @@ export const pageMetadata: Record<string, { title: string; description: string }
     description:
       'Stories and insights about hosting great gatherings. Tips, inspiration, and updates from Gather Cater.',
   },
+  gallery: {
+    title: 'Gallery | Our Work',
+    description:
+      'A glimpse into the gatherings we\'ve hosted. Tablescapes, buffets, live counters, and more. Premium catering in Dubai & Abu Dhabi.',
+  },
 };

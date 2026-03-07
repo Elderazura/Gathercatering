@@ -19,6 +19,7 @@ const defaultMeta = pageMetadata.home;
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const ogLocale = locale === 'ar' ? 'ar_AE' : 'en_AE';
+  const canonical = locale === routing.defaultLocale ? siteUrl : `${siteUrl.replace(/\/$/, '')}/${locale}`;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       type: 'website',
       locale: ogLocale,
-      url: siteUrl,
+      url: canonical,
       siteName: siteConfig.name,
       title: defaultMeta.title,
       description: defaultMeta.description,
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: defaultMeta.description,
     },
     alternates: {
-      canonical: siteUrl,
+      canonical,
     },
   };
 }

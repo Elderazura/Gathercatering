@@ -1,35 +1,31 @@
 import type { Metadata } from "next";
-
-const siteName = "Gather Catering";
-const siteDescription =
-  "Premium catering and hosting. International menus, elegant setups, warm hospitality. We host gatherings, not just cater events.";
+import { siteConfig } from "@/lib/seo";
 
 export const defaultMetadata: Metadata = {
   title: {
-    template: `%s | ${siteName}`,
-    default: siteName,
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.name,
   },
-  description: siteDescription,
+  description: siteConfig.description,
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://gathercatering.com", // Update with actual domain
-    siteName,
-    title: siteName,
-    description: siteDescription,
+    locale: "en_AE",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
     images: [
       {
-        url: "/og/og.jpg",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: siteName,
+        alt: siteConfig.name,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteName,
-    description: siteDescription,
-    images: ["/og/og.jpg"],
+    title: siteConfig.name,
+    description: siteConfig.description,
   },
 };

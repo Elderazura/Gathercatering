@@ -3,27 +3,28 @@ import { siteConfig } from '@/lib/seo';
 import { routing } from '@/lib/routing';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url;
+  const baseUrl = siteConfig.url.replace(/\/$/, '');
   const locales = routing.locales;
   const defaultLocale = routing.defaultLocale;
 
-  const paths = ['', '/about', '/services', '/menu', '/contact', '/blog'];
+  const paths = ['', '/about', '/services', '/menu', '/contact', '/blog', '/gallery'];
 
   const entries: MetadataRoute.Sitemap = [];
 
   for (const path of paths) {
     for (const locale of locales) {
-      const url = locale === defaultLocale ? `${baseUrl}${path || '/'}` : `${baseUrl}/${locale}${path}`;
+      const pathSlug = path || '/';
+      const url = locale === defaultLocale ? `${baseUrl}${pathSlug}` : `${baseUrl}/${locale}${pathSlug}`;
       entries.push({
-        url: url.endsWith('//') ? url.slice(0, -1) : url,
+        url,
         lastModified: new Date(),
         changeFrequency: path === '' ? 'weekly' : 'monthly',
-        priority: path === '' ? 1 : 0.8,
+        priority: path === '' ? 1 : path === '/gallery' ? 0.7 : 0.8,
         alternates: {
           languages: Object.fromEntries(
             locales.map((l) => [
               l,
-              l === defaultLocale ? `${baseUrl}${path || '/'}` : `${baseUrl}/${l}${path}`,
+              l === defaultLocale ? `${baseUrl}${pathSlug}` : `${baseUrl}/${l}${pathSlug}`,
             ])
           ),
         },
