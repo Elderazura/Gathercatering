@@ -2,150 +2,225 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Home, Users, Briefcase, Flame, ArrowRight } from 'lucide-react';
 import { Link } from '@/lib/routing';
-import { Button } from '@/components/ui/button';
+import { gatherImages } from '@/lib/constants';
+
 const services = [
-  { key: 'boutiqueFive' as const, Icon: Home, image: '/service/1.jpeg' },
-  { key: 'socialFlow' as const, Icon: Users, image: '/service/2.jpeg' },
-  { key: 'corporateConnector' as const, Icon: Briefcase, image: '/service/3.jpeg' },
-  { key: 'liveRituals' as const, Icon: Flame, image: '/service/4.jpeg' },
+  { key: 'boutiqueFive' as const, num: '01', image: '/service/1.jpeg' },
+  { key: 'socialFlow' as const, num: '02', image: '/service/2.jpeg' },
+  { key: 'corporateConnector' as const, num: '03', image: '/service/3.jpeg' },
+  { key: 'liveRituals' as const, num: '04', image: '/service/4.jpeg' },
 ];
 
-const fadeIn = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+};
 
 export default function ServicesPage() {
   const t = useTranslations('services');
 
   return (
-    <div className="pt-16 sm:pt-20">
-      {/* Hero - Image with overlapping card */}
-      <section className="relative" style={{ margin: 0, border: 'none' }}>
-        <div className="relative h-[55vh] min-h-[380px] md:h-[65vh]">
-          <img
-            src="/service/service_hero.jpeg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-        </div>
-        <div className="relative z-10 -mt-20 md:-mt-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white p-8 md:p-12 shadow-xl"
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight">
+    <div>
+      {/* ─── HERO ─── */}
+      <section className="relative h-[72vh] min-h-[500px] pt-14 sm:pt-16 overflow-hidden" style={{ margin: 0, border: 'none' }}>
+        <img
+          src="/service/service_hero.jpeg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+        <div className="relative z-10 flex h-full flex-col justify-end pb-14 px-6 sm:px-10 lg:px-16">
+          <div className="max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="label-editorial text-white/55 mb-5"
+            >
+              What We Do
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-white leading-[1.08]"
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 400, fontStyle: 'italic' }}
+            >
               {t('title')}
-            </h1>
-            <p className="mt-5 text-lg text-gray-600 max-w-2xl">
+            </motion.h1>
+            <motion.div
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="h-px bg-white/30 w-20 mt-7 mb-6"
+            />
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="text-white/70 text-sm sm:text-base leading-relaxed max-w-md"
+            >
               {t('subtitle')}
-            </p>
-            <p className="mt-4 text-gray-600">
-              {t('intro')}
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
         </div>
       </section>
 
-      {/* Services - Alternating rows */}
-      <section className="py-20 md:py-28 bg-white" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ─── INTRO ─── */}
+      <section className="py-16 md:py-20 bg-[#faf9f6]" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.p {...fadeUp} className="text-[#4a4a42] leading-relaxed max-w-2xl text-lg">
+            {t('intro')}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ─── SERVICES ─── */}
+      <section className="bg-[#faf9f6]" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           {services.map((svc, idx) => {
-            const Icon = svc.Icon;
             const isEven = idx % 2 === 0;
             return (
               <motion.div
                 key={svc.key}
-                {...fadeIn}
-                transition={{ delay: idx * 0.05 }}
-                className="grid md:grid-cols-2 gap-12 md:gap-16 items-center py-16 md:py-20 border-b border-gray-100 last:border-0"
+                {...fadeUp}
+                transition={{ delay: idx * 0.04 }}
               >
-                <div className={!isEven ? 'md:order-2' : ''}>
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={svc.image}
-                      alt=""
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className={!isEven ? 'md:order-1' : ''}>
-                  <span className="text-5xl md:text-6xl font-bold text-primary/20">{t(`${svc.key}.num`)}</span>
-                  <div className="flex items-center gap-3 mt-2 mb-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <Icon className="h-5 w-5" />
+                <div className="h-px bg-[#c8c0b4]" />
+                <div className={`grid md:grid-cols-2 gap-10 md:gap-16 items-center py-16 md:py-20`}>
+                  {/* Image */}
+                  <div className={!isEven ? 'md:order-2' : ''}>
+                    <div className="aspect-[4/3] overflow-hidden relative">
+                      <img
+                        src={svc.image}
+                        alt=""
+                        className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                      />
+                      {/* Offset border accent */}
+                      <div className={`absolute -bottom-2 ${isEven ? '-right-2' : '-left-2'} w-full h-full border border-[#04544A]/15 -z-10`} />
                     </div>
-                    <h2 className="text-2xl font-bold text-primary">{t(`${svc.key}.title`)}</h2>
                   </div>
-                  <p className="text-gray-600 font-medium mb-4">{t(`${svc.key}.subtitle`)}</p>
-                  <p className="text-gray-700 leading-relaxed mb-6">{t(`${svc.key}.tagline`)}</p>
-                  <div className="space-y-2 text-sm text-gray-600">
-                    <p>{t(`${svc.key}.vibe`)}</p>
-                    <p>{t(`${svc.key}.flow`)}</p>
-                    <p className="text-primary font-medium">{t(`${svc.key}.perfectFor`)}</p>
+
+                  {/* Text */}
+                  <div className={!isEven ? 'md:order-1' : ''}>
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="label-editorial text-[#c8c0b4]">{svc.num}</span>
+                      <div className="flex-1 h-px bg-[#c8c0b4]/50" />
+                    </div>
+                    <h2
+                      className="font-serif text-[#0c1c1a] mb-5 leading-[1.1]"
+                      style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 400, fontStyle: 'italic' }}
+                    >
+                      {t(`${svc.key}.title`)}
+                    </h2>
+                    <p className="text-[#4a4a42] font-medium mb-4 leading-relaxed">{t(`${svc.key}.subtitle`)}</p>
+                    <p className="text-[#6a6658] leading-relaxed mb-6">{t(`${svc.key}.tagline`)}</p>
+                    <div className="space-y-2">
+                      <p className="text-[#6a6658] text-sm">{t(`${svc.key}.vibe`)}</p>
+                      <p className="text-[#6a6658] text-sm">{t(`${svc.key}.flow`)}</p>
+                      <p className="text-[#04544A] text-sm font-medium mt-3">{t(`${svc.key}.perfectFor`)}</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             );
           })}
+          <div className="h-px bg-[#c8c0b4]" />
         </div>
       </section>
 
-      {/* Standards */}
-      <section className="py-20 md:py-28 bg-[#F8F7F5]" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeIn}>
-            <h2 className="text-2xl font-bold text-primary mb-6">{t('standards.title')}</h2>
-            <p className="text-gray-600 italic mb-10">{t('standards.subtitle')}</p>
-            <div className="space-y-8">
-              <p className="text-gray-700 leading-relaxed">{t('standards.hostFirst')}</p>
-              <p className="text-gray-700 leading-relaxed">{t('standards.minimalist')}</p>
-              <p className="text-gray-700 leading-relaxed">{t('standards.backbone')}</p>
-            </div>
+      {/* ─── STANDARDS ─── */}
+      <section className="py-24 md:py-32 bg-[#f0ede7]" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-6 mb-14">
+            <span className="label-editorial text-[#04544A]">Standards</span>
+            <div className="flex-1 h-px bg-[#c8c0b4]" />
           </motion.div>
-        </div>
-      </section>
-
-      {/* Image strip */}
-      <section style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-3 gap-2 md:gap-4">
-            <motion.div {...fadeIn} className="aspect-[3/4] overflow-hidden">
-              <img src="/images/gather/food/gather-pics-28.jpg" alt="" className="h-full w-full object-cover" />
+          <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20">
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
+              <h2
+                className="font-serif text-[#0c1c1a] leading-[1.1]"
+                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 400, fontStyle: 'italic' }}
+              >
+                {t('standards.title')}
+              </h2>
+              <p className="text-[#A38A7A] mt-4 italic text-sm">{t('standards.subtitle')}</p>
             </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="aspect-[3/4] overflow-hidden">
-              <img src="/images/gather/food/gather-pics-32.jpg" alt="" className="h-full w-full object-cover" />
-            </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="aspect-[3/4] overflow-hidden">
-              <img src="/images/gather/food/gather-pics-36.jpg" alt="" className="h-full w-full object-cover" />
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-6">
+              <p className="text-[#4a4a42] leading-relaxed">{t('standards.hostFirst')}</p>
+              <div className="h-px bg-[#c8c0b4]/50" />
+              <p className="text-[#4a4a42] leading-relaxed">{t('standards.minimalist')}</p>
+              <div className="h-px bg-[#c8c0b4]/50" />
+              <p className="text-[#4a4a42] leading-relaxed">{t('standards.backbone')}</p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 md:py-28 bg-primary text-white" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 {...fadeIn} className="text-2xl md:text-3xl font-bold mb-6">
-            {t('consult.headline')}
-          </motion.h2>
-          <motion.p {...fadeIn} transition={{ delay: 0.1 }} className="opacity-95 mb-10">
-            {t('consult.body')}
-          </motion.p>
-          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/95 rounded-full w-full sm:w-auto">
-                {t('consult.consultBtn')}
-              </Button>
-            </Link>
-            <Link href="/menu">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 rounded-full w-full sm:w-auto">
-                {t('consult.menuBtn')}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+      {/* ─── IMAGE STRIP ─── */}
+      <section style={{ margin: 0, border: 'none' }}>
+        <div className="grid grid-cols-3 gap-1 sm:gap-2">
+          {[
+            gatherImages.gallery[0],
+            gatherImages.gallery[4],
+            gatherImages.gallery[8],
+          ].map((src, i) => (
+            <motion.div
+              key={i}
+              {...fadeUp}
+              transition={{ delay: i * 0.08 }}
+              className="aspect-[3/4] overflow-hidden"
+            >
+              <img
+                src={src}
+                alt=""
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── CTA ─── */}
+      <section className="relative py-32 md:py-40 overflow-hidden" style={{ margin: 0, border: 'none' }}>
+        <img
+          src={gatherImages.gallery[7]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0c1c1a]/78" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp}>
+            <div className="h-px bg-white/20 mb-12 max-w-xs" />
+            <h2
+              className="font-serif text-white leading-[1.1] mb-12"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)', fontWeight: 300, fontStyle: 'italic' }}
+            >
+              {t('consult.headline')}
+            </h2>
+            <p className="text-white/65 leading-relaxed mb-12 max-w-md">{t('consult.body')}</p>
+            <div className="flex flex-wrap gap-5 items-center">
+              <Link href="/contact">
+                <span className="label-editorial border border-white text-white px-8 py-4 hover:bg-white hover:text-[#04544A] transition-all duration-300 inline-flex items-center gap-3">
+                  {t('consult.consultBtn')}
+                  <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+                    <path d="M12 1l3 3-3 3M15 4H1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+                  </svg>
+                </span>
+              </Link>
+              <Link href="/menu">
+                <span className="label-editorial text-white/45 hover:text-white transition-colors duration-200 inline-flex items-center gap-3">
+                  {t('consult.menuBtn')}
+                  <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+                    <path d="M12 1l3 3-3 3M15 4H1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+                  </svg>
+                </span>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

@@ -6,84 +6,88 @@ import Image from 'next/image';
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-          {/* Brand */}
-          <div className="col-span-1 sm:col-span-2 md:col-span-2">
-            <div className="relative w-28 sm:w-32 h-8 sm:h-10 mb-3 sm:mb-4">
+    <footer className="bg-[#0c1c1a] text-white">
+      {/* Top rule */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="h-px bg-white/10" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-14 md:py-16">
+        <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-20 items-start">
+
+          {/* Left: logo + tagline */}
+          <div>
+            <div className="relative w-36 h-10 mb-6">
               <Image
                 src="/logos/Logo_white.png"
                 alt="Gather Cater"
                 fill
-                className="object-contain"
-                sizes="(max-width: 640px) 112px, 128px"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  const parent = target.parentElement;
-                  if (parent && !parent.querySelector('.logo-fallback')) {
-                    target.style.display = 'none';
-                    const fallback = document.createElement('span');
-                    fallback.className = 'logo-fallback text-lg sm:text-xl font-bold text-white';
-                    fallback.textContent = 'Gather Cater';
-                    parent.appendChild(fallback);
-                  }
-                }}
+                className="object-contain object-left"
+                sizes="144px"
               />
             </div>
-            <p className="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed">{t('description')}</p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">{t('quickLinks')}</h3>
-            <ul className="space-y-1.5 sm:space-y-2">
-              <li>
-                <Link href="/" className="text-gray-300 hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-gray-300 hover:text-white transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/menu" className="text-gray-300 hover:text-white transition-colors">
-                  Menu
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">{t('contact')}</h3>
-            <p className="text-sm sm:text-base text-gray-300">
+            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+              {t('description')}
+            </p>
+            <div className="mt-8">
               <a
                 href={`mailto:${t('email')}`}
-                className="hover:text-white transition-colors break-all"
+                className="label-editorial text-white/40 hover:text-white transition-colors duration-200"
               >
                 {t('email')}
               </a>
-            </p>
+            </div>
+          </div>
+
+          {/* Right: nav columns */}
+          <div className="grid grid-cols-2 gap-x-16 gap-y-3">
+            <div className="space-y-3">
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/about', label: 'About' },
+                { href: '/services', label: 'Services' },
+              ].map((link) => (
+                <div key={link.href}>
+                  <Link
+                    href={link.href as '/'}
+                    className="label-editorial text-white/40 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-3">
+              {[
+                { href: '/menu', label: 'Menu' },
+                { href: '/gallery', label: 'Gallery' },
+                { href: '/contact', label: 'Contact' },
+              ].map((link) => (
+                <div key={link.href}>
+                  <Link
+                    href={link.href as '/'}
+                    className="label-editorial text-white/40 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-sm sm:text-base text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Gather Cater. {t('rights')}</p>
+        {/* Bottom: rule + copyright */}
+        <div className="h-px bg-white/10 mt-12 mb-6" />
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <p className="label-editorial text-white/25">
+            &copy; {year} Gather Cater. {t('rights')}
+          </p>
+          <p className="label-editorial text-white/20">
+            Dubai · Abu Dhabi · UAE
+          </p>
         </div>
       </div>
     </footer>

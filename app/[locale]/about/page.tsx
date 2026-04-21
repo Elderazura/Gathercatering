@@ -3,137 +3,222 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/lib/routing';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 import { gatherImages } from '@/lib/constants';
 
-const fadeIn = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+};
 
 export default function AboutPage() {
   const t = useTranslations('about');
 
   return (
-    <div className="pt-16 sm:pt-20">
-      {/* Hero - Image with overlapping content card */}
-      <section className="relative" style={{ margin: 0, border: 'none' }}>
-        <div className="relative h-[60vh] min-h-[400px] md:h-[70vh]">
-          <img
-            src={gatherImages.gallery[0]}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        </div>
-        <div className="relative z-10 -mt-24 md:-mt-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white p-8 md:p-12 lg:p-14 shadow-xl"
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight">
+    <div>
+      {/* ─── HERO ─── */}
+      <section className="relative h-[75vh] min-h-[520px] pt-14 sm:pt-16 overflow-hidden" style={{ margin: 0, border: 'none' }}>
+        <img
+          src={gatherImages.gallery[0]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+        <div className="relative z-10 flex h-full flex-col justify-end pb-14 sm:pb-18 px-6 sm:px-10 lg:px-16">
+          <div className="max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="label-editorial text-white/55 mb-5"
+            >
+              Our Story
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-white leading-[1.08]"
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 400, fontStyle: 'italic' }}
+            >
               {t('headline')}
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl">
+            </motion.h1>
+            <motion.div
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="h-px bg-white/30 w-20 mt-7 mb-6"
+            />
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="text-white/70 text-sm sm:text-base leading-relaxed max-w-sm"
+            >
               {t('subheadline')}
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
         </div>
       </section>
 
-      {/* Legacy - Text + stat */}
-      <section className="py-20 md:py-28 bg-white" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-start gap-12 md:gap-16">
-            <motion.div {...fadeIn} className="md:w-24 shrink-0">
-              <span className="text-6xl md:text-7xl font-bold text-primary/20">27</span>
-              <span className="block text-sm font-medium text-primary mt-1">years</span>
+      {/* ─── LEGACY ─── */}
+      <section className="py-24 md:py-32 bg-[#faf9f6]" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-6 mb-16">
+            <span className="label-editorial text-[#04544A]">Legacy</span>
+            <div className="flex-1 h-px bg-[#c8c0b4]" />
+          </motion.div>
+
+          <div className="grid md:grid-cols-[auto_1fr] gap-12 md:gap-20 items-start">
+            {/* Large numeral */}
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="hidden md:block">
+              <span
+                className="font-serif text-[#04544A]/15 leading-none select-none"
+                style={{ fontSize: 'clamp(6rem, 14vw, 11rem)', fontWeight: 300 }}
+              >
+                27
+              </span>
+              <span className="block label-editorial text-[#04544A] mt-1">years</span>
             </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.1 }}>
-              <h2 className="text-2xl font-bold text-primary mb-6">{t('legacy.title')}</h2>
-              <p className="text-xl text-gray-900 mb-6">{t('legacy.intro')}</p>
-              <p className="text-gray-700 leading-relaxed mb-6">{t('legacy.body')}</p>
-              <p className="text-gray-700 leading-relaxed">{t('legacy.continuation')}</p>
+
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
+              <h2
+                className="font-serif text-[#0c1c1a] mb-8 leading-[1.1]"
+                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 400, fontStyle: 'italic' }}
+              >
+                {t('legacy.title')}
+              </h2>
+              <p className="text-[#0c1c1a] text-lg leading-relaxed mb-5 max-w-2xl">{t('legacy.intro')}</p>
+              <p className="text-[#4a4a42] leading-relaxed mb-5 max-w-2xl">{t('legacy.body')}</p>
+              <p className="text-[#4a4a42] leading-relaxed max-w-2xl">{t('legacy.continuation')}</p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Image break */}
+      {/* ─── FULL-WIDTH IMAGE ─── */}
       <section style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeIn} className="aspect-[2/1] overflow-hidden">
-            <img
-              src="/images/gather/food/gather-pics-28.jpg"
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </motion.div>
-        </div>
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.7 }}
+          className="w-full aspect-[21/9] overflow-hidden"
+        >
+          <img
+            src="/images/gather/food/gather-pics-28.jpg"
+            alt=""
+            className="h-full w-full object-cover"
+          />
+        </motion.div>
       </section>
 
-      {/* Philosophy */}
-      <section className="py-20 md:py-28 bg-[#F8F7F5]" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeIn}>
-            <p className="text-sm font-medium text-primary uppercase tracking-widest mb-8">
-              {t('philosophy.title')}
-            </p>
-            <p className="text-2xl md:text-3xl font-medium text-gray-900 leading-snug mb-10">
+      {/* ─── PHILOSOPHY ─── */}
+      <section className="py-24 md:py-32 bg-[#f0ede7]" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-6 mb-16">
+            <span className="label-editorial text-[#04544A]">{t('philosophy.title')}</span>
+            <div className="flex-1 h-px bg-[#c8c0b4]" />
+          </motion.div>
+
+          <div className="max-w-3xl">
+            <motion.p
+              {...fadeUp}
+              transition={{ duration: 0.7 }}
+              className="font-serif text-[#0c1c1a] mb-10 leading-[1.25]"
+              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 400, fontStyle: 'italic' }}
+            >
               {t('philosophy.intro')}
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-8">{t('philosophy.body')}</p>
-            <p className="text-gray-700 leading-relaxed mb-12">{t('philosophy.continuation')}</p>
-            <div className="pl-6 border-l-4 border-primary">
-              <p className="text-lg md:text-xl text-primary font-medium leading-relaxed">
+            </motion.p>
+            <motion.p {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="text-[#4a4a42] leading-relaxed mb-6">
+              {t('philosophy.body')}
+            </motion.p>
+            <motion.p {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }} className="text-[#4a4a42] leading-relaxed mb-12">
+              {t('philosophy.continuation')}
+            </motion.p>
+            {/* Rule quote */}
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }} className="border-l-2 border-[#04544A] pl-8">
+              <p
+                className="font-serif text-[#04544A] leading-relaxed"
+                style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 400, fontStyle: 'italic' }}
+              >
                 {t('philosophy.rule')}
               </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Signature - Image + text */}
-      <section className="py-20 md:py-28 bg-white" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
-            <motion.div {...fadeIn} className="md:col-span-2">
+      {/* ─── SIGNATURE ─── */}
+      <section className="py-24 md:py-32 bg-[#faf9f6]" style={{ margin: 0, border: 'none' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-16 items-center">
+            <motion.div {...fadeUp} transition={{ duration: 0.7 }} className="relative">
               <div className="aspect-[4/5] overflow-hidden">
                 <img
-                  src="/images/gather/food/legacy-of-warmth.png"
+                  src={gatherImages.gallery[2]}
                   alt=""
                   className="h-full w-full object-cover"
                 />
               </div>
+              {/* Offset border */}
+              <div className="absolute -bottom-3 -left-3 w-full h-full border border-[#04544A]/20 -z-10" />
             </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="md:col-span-3">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
+
+            <motion.div {...fadeUp} transition={{ duration: 0.7, delay: 0.1 }}>
+              <div className="flex items-center gap-6 mb-10">
+                <span className="label-editorial text-[#04544A]">Signature</span>
+                <div className="flex-1 h-px bg-[#c8c0b4]" />
+              </div>
+              <h2
+                className="font-serif text-[#0c1c1a] mb-8 leading-[1.1]"
+                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 400, fontStyle: 'italic' }}
+              >
                 {t('signature.title')}
               </h2>
-              <p className="text-gray-700 leading-relaxed mb-6">{t('signature.body')}</p>
-              <p className="text-gray-700 leading-relaxed">{t('signature.continuation')}</p>
-              <Link href="/menu" className="inline-flex items-center gap-2 mt-8 text-primary font-semibold hover:underline">
-                Explore our menu <ArrowRight className="h-4 w-4" />
+              <p className="text-[#4a4a42] leading-relaxed mb-5">{t('signature.body')}</p>
+              <p className="text-[#4a4a42] leading-relaxed mb-10">{t('signature.continuation')}</p>
+              <Link
+                href="/menu"
+                className="label-editorial text-[#04544A] flex items-center gap-3 hover:gap-5 transition-all duration-300"
+              >
+                Explore our menu
+                <svg width="20" height="8" viewBox="0 0 20 8" fill="none">
+                  <path d="M16 1l3 3-3 3M19 4H1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+                </svg>
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Commitment + CTA */}
-      <section className="py-20 md:py-28 bg-primary text-white" style={{ margin: 0, border: 'none' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div {...fadeIn}>
-            <h2 className="text-xl font-semibold uppercase tracking-widest opacity-80 mb-6">
-              {t('commitment.title')}
+      {/* ─── COMMITMENT / CTA ─── */}
+      <section className="relative py-32 md:py-40 overflow-hidden" style={{ margin: 0, border: 'none' }}>
+        <img
+          src={gatherImages.gallery[5]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0c1c1a]/80" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} transition={{ duration: 0.7 }}>
+            <div className="h-px bg-white/20 mb-12 max-w-xs" />
+            <p className="label-editorial text-white/50 mb-6">{t('commitment.title')}</p>
+            <h2
+              className="font-serif text-white leading-[1.1] mb-8"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 300, fontStyle: 'italic' }}
+            >
+              {t('commitment.subtitle')}
             </h2>
-            <p className="text-2xl md:text-3xl font-bold mb-8">{t('commitment.subtitle')}</p>
-            <p className="text-lg opacity-95 leading-relaxed mb-12">{t('commitment.body')}</p>
-            <p className="text-xl font-semibold mb-10">{t('closing')}</p>
+            <p className="text-white/70 leading-relaxed mb-4 max-w-xl">{t('commitment.body')}</p>
+            <p className="text-white/90 font-medium mb-12 max-w-xl">{t('closing')}</p>
             <Link href="/contact">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/95 rounded-full px-10">
+              <span className="label-editorial border border-white text-white px-8 py-4 hover:bg-white hover:text-[#04544A] transition-all duration-300 inline-flex items-center gap-3">
                 {t('ctaBox.button')}
-              </Button>
+                <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+                  <path d="M12 1l3 3-3 3M15 4H1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+                </svg>
+              </span>
             </Link>
           </motion.div>
         </div>
