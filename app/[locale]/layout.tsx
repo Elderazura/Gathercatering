@@ -4,10 +4,26 @@ import { getMessages } from 'next-intl/server';
 import { routing } from '@/lib/routing';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { Cormorant_Garamond, Jost } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { siteConfig, pageMetadata } from '@/lib/seo';
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-jost',
+  display: 'swap',
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -75,7 +91,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} className={`${cormorant.variable} ${jost.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -86,13 +102,13 @@ export default async function LocaleLayout({
       </head>
       <body
         className={locale === 'ar' ? 'rtl' : ''}
-        style={{ background: '#ffffff', margin: 0, padding: 0, overflowX: 'hidden' }}
+        style={{ background: 'var(--background)', margin: 0, padding: 0, overflowX: 'hidden' }}
       >
         <NextIntlClientProvider messages={messages}>
           <Navigation />
           <main
             role="main"
-            style={{ margin: 0, padding: 0, background: '#ffffff', minHeight: '100vh' }}
+            style={{ margin: 0, padding: 0, background: 'var(--background)', minHeight: '100vh' }}
           >
             {children}
           </main>

@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/lib/routing';
 import { useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
 
 export default function VideoHero() {
   const t = useTranslations('hero');
@@ -41,37 +40,74 @@ export default function VideoHero() {
             className="h-full w-full object-cover"
           />
         </video>
+        {/* Subtle gradient: dark at edges, lighter in center */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
       </div>
 
+      {/* Content — left aligned, architectural */}
+      <div className="relative z-[2] flex h-full flex-col justify-end pb-16 sm:pb-20 lg:pb-24 px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-2xl xl:max-w-3xl">
 
-      {/* Content */}
-      <div className="relative z-[2] flex h-full flex-col items-center justify-end pb-24 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+          {/* Eyebrow */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-4xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1]"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="label-editorial text-white/60 mb-6 tracking-[0.2em]"
+          >
+            Dubai · UAE
+          </motion.p>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-white leading-[1.05] mb-8"
+            style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', fontWeight: 400, fontStyle: 'italic' }}
           >
             {t('title')}
           </motion.h1>
 
+          {/* Thin rule */}
+          <motion.div
+            initial={{ scaleX: 0, originX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="h-px bg-white/30 w-24 mb-8"
+          />
+
+          {/* Subtext + CTA in a row */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-8"
+            transition={{ duration: 0.7, delay: 0.75 }}
+            className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10"
           >
-            <Link href="/contact">
-              <Button
-                size="lg"
-                className="min-w-[200px] bg-white text-primary hover:bg-white/95 hover:text-primary text-base"
-              >
-                {t('cta')}
-              </Button>
+            <p className="text-white/75 text-sm sm:text-base font-light leading-relaxed max-w-xs">
+              International menus · Elegant setups · Seamless hosting
+            </p>
+            <Link href="/contact" className="shrink-0">
+              <span className="inline-flex items-center gap-3 label-editorial text-white border border-white/50 px-6 py-3 hover:bg-white hover:text-[#04544A] transition-all duration-300">
+                Plan Your Gathering
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" className="flex-shrink-0">
+                  <path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square"/>
+                </svg>
+              </span>
             </Link>
           </motion.div>
         </div>
+
+        {/* Bottom right: year / tagline */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1 }}
+          className="absolute bottom-16 sm:bottom-20 right-6 sm:right-10 lg:right-16 label-editorial text-white/40 hidden sm:block"
+        >
+          Est. 27 years of gathering
+        </motion.p>
       </div>
     </section>
   );

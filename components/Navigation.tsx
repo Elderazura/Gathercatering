@@ -15,17 +15,16 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 60);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleLanguage = () => {
     const newLocale = locale === 'en' ? 'ar' : 'en';
     const cleanPath = pathname === '/' ? '' : pathname;
-    const newPath = `/${newLocale}${cleanPath}`;
-    window.location.href = newPath;
+    window.location.href = `/${newLocale}${cleanPath}`;
   };
 
   const navItems = [
@@ -40,17 +39,18 @@ export default function Navigation() {
   return (
     <nav
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 pointer-events-auto transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white shadow-lg'
-          : 'bg-black/30 backdrop-blur-md'
+          ? 'bg-[#faf9f6] border-b border-[#c8c0b4]'
+          : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-20">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex justify-between items-center h-14 sm:h-16">
+
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="relative w-40 h-12 sm:w-56 sm:h-16 md:w-64 md:h-20 transition-all duration-300">
+          <Link href="/" className="flex items-center">
+            <div className="relative w-32 h-9 sm:w-44 sm:h-12 md:w-52 md:h-14 transition-all duration-300">
               <AnimatePresence mode="wait">
                 {isScrolled ? (
                   <motion.div
@@ -58,27 +58,16 @@ export default function Navigation() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     className="absolute inset-0"
                   >
                     <Image
                       src="/logos/Logo_Green.png"
                       alt="Gather Cater"
                       fill
-                      className="object-contain"
+                      className="object-contain object-left"
                       priority
-                      sizes="(max-width: 768px) 224px, 256px"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        const parent = target.parentElement;
-                        if (parent && !parent.querySelector('.logo-fallback')) {
-                          target.style.display = 'none';
-                          const fallback = document.createElement('span');
-                          fallback.className = 'logo-fallback text-2xl font-bold text-primary';
-                          fallback.textContent = 'Gather Cater';
-                          parent.appendChild(fallback);
-                        }
-                      }}
+                      sizes="(max-width: 768px) 176px, 208px"
                     />
                   </motion.div>
                 ) : (
@@ -87,27 +76,16 @@ export default function Navigation() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     className="absolute inset-0"
                   >
                     <Image
                       src="/logos/Logo_white.png"
                       alt="Gather Cater"
                       fill
-                      className="object-contain"
+                      className="object-contain object-left"
                       priority
-                      sizes="(max-width: 768px) 224px, 256px"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        const parent = target.parentElement;
-                        if (parent && !parent.querySelector('.logo-fallback')) {
-                          target.style.display = 'none';
-                          const fallback = document.createElement('span');
-                          fallback.className = 'logo-fallback text-2xl font-bold text-white';
-                          fallback.textContent = 'Gather Cater';
-                          parent.appendChild(fallback);
-                        }
-                      }}
+                      sizes="(max-width: 768px) 176px, 208px"
                     />
                   </motion.div>
                 )}
@@ -116,60 +94,69 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <div className="hidden lg:flex items-center gap-8 xl:gap-10">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-xs xl:text-sm font-medium transition-colors hover:text-primary ${
+                className={`label-editorial transition-colors duration-200 ${
                   pathname === item.href
-                    ? 'text-primary border-b-2 border-primary'
+                    ? isScrolled ? 'text-[#04544A]' : 'text-white'
                     : isScrolled
-                    ? 'text-gray-700'
-                    : 'text-white'
+                    ? 'text-[#4a4a42] hover:text-[#04544A]'
+                    : 'text-white/70 hover:text-white'
                 }`}
               >
                 {item.label}
               </Link>
             ))}
-            <button
-              type="button"
-              onClick={toggleLanguage}
-              className={`px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-medium transition-colors ${
-                isScrolled
-                  ? 'bg-primary text-white hover:bg-opacity-90'
-                  : 'bg-white text-primary hover:bg-opacity-90'
-              }`}
-            >
-              {locale === 'en' ? 'العربية' : 'English'}
-            </button>
+
+            <div className="flex items-center gap-5 ml-4 pl-5 border-l border-current/20">
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                className={`label-editorial transition-colors duration-200 ${
+                  isScrolled ? 'text-[#4a4a42] hover:text-[#04544A]' : 'text-white/70 hover:text-white'
+                }`}
+              >
+                {locale === 'en' ? 'ع' : 'EN'}
+              </button>
+              <Link href="/contact">
+                <span className={`label-editorial border px-4 py-2 transition-all duration-200 ${
+                  isScrolled
+                    ? 'border-[#04544A] text-[#04544A] hover:bg-[#04544A] hover:text-white'
+                    : 'border-white/60 text-white hover:border-white hover:bg-white/10'
+                }`}>
+                  Enquire
+                </span>
+              </Link>
+            </div>
           </div>
 
-          {/* Mobile/Tablet Menu Button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             type="button"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
-            className={`lg:hidden p-2 rounded-md min-h-[44px] min-w-[44px] ${
-              isScrolled ? 'text-gray-700' : 'text-white'
+            className={`lg:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center ${
+              isScrolled ? 'text-[#1a1a1a]' : 'text-white'
             }`}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {isMobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            <div className="w-6 flex flex-col gap-[5px]">
+              <motion.span
+                animate={isMobileMenuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                className="block h-px bg-current origin-center"
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                className="block h-px bg-current"
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                className="block h-px bg-current origin-center"
+              />
+            </div>
           </button>
         </div>
       </div>
@@ -181,30 +168,42 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t shadow-lg"
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:hidden bg-[#faf9f6] border-t border-[#c8c0b4] overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-4 space-y-2">
-              {navItems.map((item) => (
-                <Link
+            <div className="px-6 py-8 space-y-1">
+              {navItems.map((item, i) => (
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    pathname === item.href
-                      ? 'bg-primary text-white'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.04 }}
                 >
-                  {item.label}
-                </Link>
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block py-3 border-b border-[#d5cfc5] label-editorial ${
+                      pathname === item.href ? 'text-[#04544A]' : 'text-[#4a4a42]'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
-              <button
-                type="button"
-                onClick={toggleLanguage}
-                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium bg-primary text-white hover:bg-opacity-90"
-              >
-                {locale === 'en' ? 'العربية' : 'English'}
-              </button>
+              <div className="pt-6 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={toggleLanguage}
+                  className="label-editorial text-[#4a4a42]"
+                >
+                  {locale === 'en' ? 'العربية' : 'English'}
+                </button>
+                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  <span className="label-editorial border border-[#04544A] text-[#04544A] px-5 py-2.5">
+                    Enquire
+                  </span>
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
